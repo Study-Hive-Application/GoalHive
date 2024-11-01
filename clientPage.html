@@ -50,67 +50,70 @@
     <div class="bg-gray-100 min-h-screen p-8">
         <!-- Student Profile Section -->
         <section class="bg-white p-6 rounded-lg shadow-lg mb-8">
-          <div class="flex items-center">
+          <div class="flex flex-col lg:flex-row lg:items-start pt-2">
+            <!-- Profile Picture Section -->
+            <div class="lg:mr-8 mb-4 lg:mb-0">
+              <img id="profile-image-preview" class="rounded-full w-24 h-24 mt-4" src="" alt="Profile Preview">
+              <input type="file" id="profile-picture" accept="image/*" onchange="previewImage(event)" class="mt-2">
+            </div>
+            
+            <!-- Profile Details Section -->
             <div>
-                <img id="profile-image-preview" class="rounded-full w-24 h-24 mt-4" src="" alt="Profile Preview">
-                <input type="file" id="profile-picture" accept="image/*" onchange="previewImage(event)">
-              </div>
-              
-              <div >
-                <!-- Profile Header -->
-                <h2 class="text-2xl font-semibold mb-2" id="name-display">Student Name</h2>
+              <!-- Profile Header -->
+              <h2 class="text-2xl font-semibold mb-2 pt-8 lg:pt-0" id="name-display">Student Name</h2>
+              <input 
+                type="text" 
+                class="hidden w-full text-2xl font-semibold mb-2 p-1 border border-gray-300 rounded" 
+                id="name-input" 
+                placeholder="Enter Name"
+              />
+              <hr><br>
+            
+              <!-- Bio Section -->
+              <p class="text-gray-600 mb-2" id="bio-display">Bio: Passionate about coding and physics!</p>
+              <input 
+                type="text" 
+                class="hidden w-full mb-2 p-1 border border-gray-300 rounded" 
+                id="bio-input" 
+                placeholder="Enter Bio"
+              />
+            
+              <!-- Subjects Section -->
+              <div class="mb-2">
+                <span class="text-blue-500 font-medium">Subjects:</span>
+                <span id="subjects-display">Math, Physics, Coding</span>
                 <input 
                   type="text" 
-                  class="hidden w-full text-2xl font-semibold mb-2 p-1 border border-gray-300 rounded" 
-                  id="name-input" 
-                  placeholder="Enter Name"
+                  class="hidden w-full mt-1 p-1 border border-gray-300 rounded" 
+                  id="subjects-input" 
+                  placeholder="Enter Subjects"
                 />
-                <hr><br>
-              
-                <!-- Bio Section -->
-                <p class="text-gray-600 mb-2" id="bio-display">Bio: Passionate about coding and physics!</p>
+              </div>
+            
+              <!-- Skills Section -->
+              <div>
+                <span class="text-blue-500 font-medium">Skills:</span>
+                <span id="skills-display">Problem Solving, Data Structures</span>
                 <input 
                   type="text" 
-                  class="hidden w-full mb-2 p-1 border border-gray-300 rounded" 
-                  id="bio-input" 
-                  placeholder="Enter Bio"
+                  class="hidden w-full mt-1 p-1 border border-gray-300 rounded" 
+                  id="skills-input" 
+                  placeholder="Enter Skills"
                 />
-              
-                <!-- Subjects Section -->
-                <div class="mb-2">
-                  <span class="text-blue-500 font-medium">Subjects:</span>
-                  <span id="subjects-display">Math, Physics, Coding</span>
-                  <input 
-                    type="text" 
-                    class="hidden w-full mt-1 p-1 border border-gray-300 rounded" 
-                    id="subjects-input" 
-                    placeholder="Enter Subjects"
-                  />
-                </div>
-              
-                <!-- Skills Section -->
-                <div>
-                  <span class="text-blue-500 font-medium">Skills:</span>
-                  <span id="skills-display">Problem Solving, Data Structures</span>
-                  <input 
-                    type="text" 
-                    class="hidden w-full mt-1 p-1 border border-gray-300 rounded" 
-                    id="skills-input" 
-                    placeholder="Enter Skills"
-                  />
-                </div>
-              
-                <!-- Edit and Save Buttons -->
-                <button 
-                  onclick="editProfile()" 
-                  class="mt-4 bg-blue-500 text-white px-4 py-2 rounded" 
-                  id="edit-button">Edit</button>
-                <button 
-                  onclick="saveProfile()" 
-                  class="hidden mt-4 bg-green-500 text-white px-4 py-2 rounded" 
-                  id="save-button">Save</button>
               </div>
+            
+              <!-- Edit and Save Buttons -->
+              <button 
+                onclick="editProfile()" 
+                class="mt-4 bg-blue-500 text-white px-4 py-2 rounded" 
+                id="edit-button">Edit</button>
+              <button 
+                onclick="saveProfile()" 
+                class="hidden mt-4 bg-green-500 text-white px-4 py-2 rounded" 
+                id="save-button">Save</button>
+            </div>
           </div>
+          
         </section>
       
         <!-- Study Groups & Connections Section
@@ -179,7 +182,7 @@
         </section>
       </div>
 
-        <footer class="bg-gray-900 text-white">
+      <footer class="bg-gray-900 text-white">
     <div class="container mx-auto flex flex-col md:flex-row items-center justify-between py-8">
       <!-- About Global Lane Section -->
       <div class="mb-6 md:mb-0 pl-4">
