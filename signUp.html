@@ -6,6 +6,14 @@
   <title>Study Hive</title>
   <link rel="stylesheet" href="signUp.css">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="module">
+    import { createClient } from '@supabase/supabase-js';
+    const supabaseUrl = "https://sxmdizqawdjhqsihjvup.supabase.co";
+    const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN4bWRpenFhd2RqaHFzaWhqdnVwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzAzNzcxMzEsImV4cCI6MjA0NTk1MzEzMX0.mrVXtwDZrXnPYf0ahkBJenAXvTJWZLhNnsVnFGWtpBM";
+    const supabase = createClient(supabaseUrl, supabaseKey);
+</script>
+
   <script>
     function switchToLogin() {
       document.getElementById('signup-form').style.display = 'none';
@@ -145,6 +153,8 @@ style="background-image: url('https://c0.wallpaperflare.com/preview/955/464/977/
     <!-- Footer Bottom Text -->
     <p class="text-sm text-center mt-4 pb-4">&copy; 2024 Study Hive. All rights reserved.</p>
   </footer>
-<script src="signup.js"></script>
+<script type="module" src="signup.js"></script>
+<script type="module" src="./supabase.js"></script>
+
 </body>
 </html>
