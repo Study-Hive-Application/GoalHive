@@ -8,11 +8,12 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css ">
-</head>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+</head>
 <body>
   <div>
-    <header class="text-gray-400 bg-white body-font">
+    <header class="text-gray-400 bg-white body-font " data-aos="fade-down" data-aos-duration="1000">
       <div class="container mx-50 flex flex-wrap p-3 items-center justify-between">
 
         <!-- Logo Section -->
@@ -31,9 +32,9 @@
         <!-- Navigation Links -->
         <nav id="menu"
           class="hidden md:flex md:flex-grow md:items-center justify-center md:justify-end ml-62 text-base">
-          <a href="#" class="mr-5 text-black hover:text-gray-800 pr-2">Home</a>
-          <a href="#" class="mr-5 text-black hover:text-gray-800 pr-2">About us</a>
-          <a href="#" class="mr-5 text-black hover:text-gray-800 pr-2">Contact us</a>
+          <a href="index.html" class="mr-5 text-black hover:text-gray-800 pr-2">Home</a>
+          <a href="aboutUs.html" class="mr-5 text-black hover:text-gray-800 pr-2">About us</a>
+          <a href="contactUs.html" class="mr-5 text-black hover:text-gray-800 pr-2">Contact us</a>
           <a href="clientPage.html" class="mr-5 text-black hover:text-gray-800 pr-2">Client Page</a>
           <a href="signUp.html">
             <button
@@ -52,7 +53,7 @@
   </div>
 
 
-  <div class="relative h-screen md:h-screen">
+  <div class="relative h-screen md:h-screen" data-aos="fade-up" data-aos-duration="1000">
     <div class="absolute inset-0 bg-black opacity-50"></div>
     <img src="https://c4.wallpaperflare.com/wallpaper/252/4/1004/light-bulb-lights-books-wallpaper-preview.jpg" alt=""
       class="w-full h-full object-cover ">
@@ -80,15 +81,15 @@
 
   <div>
     <center>
-      <p class="text-5xl font-bold font-sans text-gray-800 pt-8 underline decoration-gray-900 underline-offset-4">About
+      <p class="text-5xl font-bold font-sans text-gray-800 pt-8 underline decoration-gray-900 underline-offset-4" data-aos="fade-right" data-aos-duration="1000">About
         Study Hive</p>
-      <p class="text-lg pt-8">"Our platform enhances student productivity by offering collaborative tools like
+      <p class="text-lg pt-8" data-aos="fade-left" data-aos-duration="1000">"Our platform enhances student productivity by offering collaborative tools like
         note-sharing,
         progress tracking, a to-do list, and real-time chat. With a Pomodoro timer for focused study sessions, students
         can
         efficiently manage tasks, share resources, and achieve their learning goals together."</p>
       <button
-        class="bg-blue-900 mt-8 p-3 pr-5 pl-5 text-white rounded-full transition-transform duration-200 ease-in-out transform hover:bg-blue-700 hover:scale-105 hover:shadow-lg">
+        class="bg-blue-900 mt-8 p-3 pr-5 pl-5 text-white rounded-full transition-transform duration-200 ease-in-out transform hover:bg-blue-700 hover:scale-105 hover:shadow-lg" data-aos="fade-up" data-aos-duration="2000">
         Learn more
       </button>
     </center>
@@ -96,11 +97,11 @@
 
   <div class="bg-gray-100 mt-8">
     <section>
-      <div class="max-w-[1260px] mx-auto">
+      <div class="max-w-[1260px] mx-auto" data-aos="fade-right" data-aos-duration="1000">
         <h1 class="text-center py-3 text-4xl font-bold text-gray-800 underline decoration-gray-900 underline-offset-4">
           Our Key Offerings:</h1>
       </div>
-      <div class="max-w-[1200px] mx-auto py-[50px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div class="max-w-[1200px] mx-auto py-[50px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" data-aos="fade-right" data-aos-duration="1000">
 
         <!-- Pomodoro Card -->
         <div class="shadow-xl p-4 text-center hover:bg-gray-300 duration-700 flex flex-col items-center">
@@ -158,7 +159,7 @@
       </div>
 
       <!-- Modal Structure -->
-      <div id="modal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
+      <div id="modal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden" data-aos="zoom-in" data-aos-duration="2000" >
         <div class="bg-white p-6 rounded-lg max-w-md mx-auto text-center">
           <h2 id="modalTitle" class="text-2xl font-bold mb-4 text-gray-800"></h2>
           <p id="modalContent" class="text-gray-600 mb-6"></p>
@@ -171,7 +172,7 @@
   </div>
 
 
-  <footer class="bg-gray-900 text-white">
+  <footer class="bg-gray-900 text-white" data-aos="fade-up" data-aos-duration="1000">
     <div class="container mx-auto flex flex-col md:flex-row items-center justify-between py-8">
       <!-- About Global Lane Section -->
       <div class="mb-6 md:mb-0 pl-4">
@@ -183,16 +184,16 @@
         </p>
       </div>
 
-      <div class="flex flex-row"> 
+      <div class="flex flex-row">
         <!-- Quick Links Section -->
         <div class="mb-6 md:mb-0 pr-16">
           <h3 class="text-lg font-bold mb-4">Quick Links</h3>
           <ul class="space-y-2">
-            <li><a href="#" class="hover:underline">Home</a></li>
-            <li><a href="#" class="hover:underline">About Us</a></li>
-            <li><a href="#" class="hover:underline">Contact Us</a></li>
-            <li><a href="#" class="hover:underline">Features</a></li>
-            <li><a href="#" class="hover:underline">Client Portal</a></li>
+            <li><a href="index.html" class="hover:underline">Home</a></li>
+            <li><a href="aboutUs.html" class="hover:underline">About Us</a></li>
+            <li><a href="contactUs.html" class="hover:underline">Contact Us</a></li>
+            <li><a href="Features.html" class="hover:underline">Features</a></li>
+            <li><a href="clientPage.html" class="hover:underline">Client Portal</a></li>
           </ul>
         </div>
 
@@ -220,6 +221,10 @@
     <p class="text-sm text-center mt-4 pb-4">&copy; 2024 Study Hive. All rights reserved.</p>
   </footer>
   <script src="script.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 
 </html>
