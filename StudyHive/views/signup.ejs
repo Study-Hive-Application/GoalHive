@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Study Hive</title>
+    <link rel="stylesheet" href="signUp.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="bg-cover bg-center h-screen"
+    style="
+      background-image: url('https://c0.wallpaperflare.com/preview/955/464/977/backgrounds-flatlay-craft-diy-school.jpg');
+    "
+  >
+    <!-- Navbar Section -->
+    <div>
+      <header class="text-gray-400 bg-white body-font">
+        <div class="container mx-auto flex flex-wrap p-3 items-center">
+          <!-- Logo Section -->
+          <a
+            href="#"
+            class="flex title-font font-medium items-center text-black mb-2 md:mb-0"
+          >
+            <img
+              src="/images/Logo-removebg-preview.png"
+              alt="logo"
+              class="w-11 h-11"
+            />
+            <span class="ml-3 text-xl text-black">Study Hive</span>
+          </a>
+
+          <!-- Hamburger Icon (shown on small screens) -->
+          <button
+            class="md:hidden ml-auto flex items-center text-black focus:outline-none"
+            onclick="toggleMenu()"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
+
+          <!-- Navigation Links (hidden on mobile) -->
+          <nav
+            id="menu"
+            class="hidden md:flex md:ml-auto flex-col md:flex-row items-center text-base justify-center w-full md:w-auto"
+          >
+            <a href="/home" class="mr-5 text-black hover:text-gray-800 pr-2"
+              >Home</a
+            >
+            <a href="#" class="mr-5 text-black hover:text-gray-800 pr-2"
+              >About us</a
+            >
+            <a href="#" class="mr-5 text-black hover:text-gray-800 pr-2"
+              >Contact us</a
+            >
+            <a href="/features" class="mr-5 text-black hover:text-gray-800 pr-2"
+              >Features</a
+            >
+            <button
+              class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0 text-white"
+            >
+              SignUp
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                class="w-4 h-4 ml-1"
+                viewBox="0 0 24 24"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </button>
+          </nav>
+        </div>
+      </header>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex items-center justify-center h-screen">
+      <!-- Added pt-16 to avoid overlap with the navbar -->
+      <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <div id="signup-form">
+          <h2 class="text-2xl font-bold mb-6">Create an Account</h2>
+          <form action="/signup" method="post">
+            <div class="mb-4">
+              <label for="name" class="block text-sm font-medium text-gray-700"
+                >Full Name</label
+              >
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                required
+              />
+            </div>
+            <div class="mb-4">
+              <label for="email" class="block text-sm font-medium text-gray-700"
+                >Email Address</label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                required
+              />
+            </div>
+            <div class="mb-6">
+              <label
+                for="password"
+                class="block text-sm font-medium text-gray-700"
+                >Password</label
+              >
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                required
+              />
+            </div>
+            <p style="color: red; margin-bottom: 10px"><%= errorMessage %></p>
+            <button
+              type="submit"
+              class="w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              Sign Up
+            </button>
+
+            <p class="mt-4 text-center text-sm text-gray-600">
+              Already have an account?
+              <button
+                type="submit"
+                class="text-indigo-600 hover:text-indigo-700"
+              >
+                <a href="/login">Login</a>
+              </button>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+    <footer class="bg-gray-900 text-white">
+      <div
+        class="container mx-auto flex flex-col md:flex-row items-center justify-between py-8"
+      >
+        <!-- About Global Lane Section -->
+        <div class="mb-6 md:mb-0 pl-4">
+          <h3 class="text-lg font-bold mb-4">About Study Hive</h3>
+          <p class="text-sm max-w-xs">
+            A collaborative learning platform built to enhance student
+            productivity by enabling note-sharing, tracking learning progress,
+            managing personal and group tasks, facilitating real-time
+            communication through chat, and promoting focused study sessions
+            using a Pomodoro timer for effective time management and goal
+            achievement.
+          </p>
+        </div>
+
+        <div class="flex flex-row">
+          <!-- Quick Links Section -->
+          <div class="mb-6 md:mb-0 pr-16">
+            <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              <li><a href="#" class="hover:underline">Home</a></li>
+              <li><a href="#" class="hover:underline">About Us</a></li>
+              <li><a href="#" class="hover:underline">Contact Us</a></li>
+              <li><a href="#" class="hover:underline">Features</a></li>
+              <li><a href="#" class="hover:underline">Client Portal</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact Us Section -->
+          <div class="mb-6 md:mb-0 pr-5">
+            <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="mailto:globallanemarketing@gmail.com"
+                  class="hover:underline"
+                  >xyhdchdcbz@gmail.com</a
+                >
+              </li>
+              <li>
+                <a href="tel:+91 8147052198" class="hover:underline"
+                  >+91 8147xxxxx</a
+                >
+              </li>
+              <li>
+                <a href="tel:+966 564427890" class="hover:underline"
+                  >+91 564xxxx</a
+                >
+              </li>
+            </ul>
+
+            <!-- Social Media Icons -->
+            <div class="mt-4 flex space-x-2">
+              <a href="#" class="hover:text-gray-400"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="hover:text-gray-400"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" class="hover:text-gray-400"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="hover:text-gray-400"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <!-- Footer Bottom Text -->
+      <p class="text-sm text-center mt-4 pb-4">
+        &copy; 2024 Study Hive. All rights reserved.
+      </p>
+    </footer>
+  </body>
+</html>
