@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Study Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+     <!-- Navbar Section -->
+<div>
+    <header class="text-gray-400 bg-white body-font " data-aos="fade-down" data-aos-duration="1000">
+      <div class="container mx-auto flex flex-wrap p-3 items-center">
+        
+        <!-- Logo Section -->
+        <a href="#" class="flex title-font font-medium items-center text-black mb-2 md:mb-0">
+          <img src="Logo-removebg-preview.png" alt="logo" class="w-11 h-11">
+          <span class="ml-3 text-xl text-black">Study Hive</span>
+        </a>
+        
+        <!-- Hamburger Icon (shown on small screens) -->
+        <button
+          class="md:hidden ml-auto flex items-center text-black focus:outline-none"
+          onclick="toggleMenu()"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+  
+        <!-- Navigation Links (hidden on mobile) -->
+        <nav
+          id="menu"
+          class="hidden md:flex md:ml-auto flex-col md:flex-row items-center text-base justify-center w-full md:w-auto"
+        >
+          <a href="index.html" class="mr-5 text-black hover:text-gray-800 pr-2">Home</a>
+          <a href="aboutUs.html" class="mr-5 text-black hover:text-gray-800 pr-2">About us</a>
+          <a href="contactUs.html" class="mr-5 text-black hover:text-gray-800 pr-2">Contact us</a>
+          <a href="Features.html" class="mr-5 text-black hover:text-gray-800 pr-2">Features</a>
+          <a href="signUp.html"><button class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0 text-white">
+            SignUp
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </button></a>
+        </nav>
+      </div>
+    </header>
+  </div>
+
+    <!-- Hero Section -->
+    <section class="bg-blue-50 py-4">
+        <div class="container mx-auto flex flex-col md:flex-row items-center px-5">
+            <!-- Text Content -->
+            <div class="md:w-1/2 md:pr-12 mb-10 md:mb-0" data-aos="fade-right" data-aos-duration="1000">
+                <h1 class="text-4xl font-bold text-blue-600 mb-4">About Study Hive</h1>
+                <p class="text-gray-700 mb-4">We are a passionate team dedicated to transforming student learning
+                    through collaboration. Our platform, tailored for students of a specific college, is designed to
+                    boost productivity, deepen understanding, and build a supportive learning community.</p>
+                <p class="text-gray-700 mb-4">With features like real-time collaboration, resource sharing, discussion
+                    forums, and personalized dashboards, our platform makes learning more engaging and accessible. We
+                    believe that learning is most effective when done together, fostering both academic success and
+                    personal growth.</p>
+                <p class="text-gray-700">Our mission is to empower students, helping them gain confidence, critical
+                    thinking skills, and a lifelong love of learning through a shared, enriching journey.</p>
+            </div>
+
+            <!-- Image -->
+            <div class="md:w-1/2" data-aos="fade-left" data-aos-duration="1000">
+                <img src="img1.webp" alt="About us" class="rounded-lg shadow-lg w-full h-auto">
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <main class="container mx-auto px-5">
+
+        <section class="text-gray-600 body-font">
+          <div class="container px-5 py-24 mx-auto">
+            <div class="flex flex-col text-center w-full mb-20">
+              <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900 pb-3" data-aos="fade-right" data-aos-duration="1000">Our Core Features</h1>
+              <p class="lg:w-2/3 mx-auto leading-relaxed text-base" data-aos="fade-left" data-aos-duration="1000">Seamlessly organize tasks, set reminders, collaborate with peers, track progress, customize themes, access resources, and enhance productivity with ease.</p>
+            </div>
+            <div class="flex flex-wrap -m-4 text-center" data-aos="fade-right" data-aos-duration="1000">
+              <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+                <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+                    <img src="Fea_Timer.png" alt="" class="w-14 h-14 mx-auto mb-2">
+                    <h2 class="title-font font-medium text-2xl text-gray-900">Pomodoro</h2>
+                  <p class="leading-relaxed">Focused Productivity</p>
+                </div>
+              </div>
+              <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+                <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+                    <img src="progress.png" alt="" class="w-14 h-14 mx-auto mb-2">
+                  <h2 class="title-font font-medium text-2xl text-gray-900">Progress Tracker</h2>
+                  <p class="leading-relaxed">Goal Monitoring</p>
+                </div>
+              </div>
+              <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+                <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+                    <img src="to-do-list.png" alt="" class="w-14 h-14 mx-auto mb-2">
+                  <h2 class="title-font font-medium text-2xl text-gray-900">ToDo List</h2>
+                  <p class="leading-relaxed">Task Management</p>
+                </div>
+              </div>
+              <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+                <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+                    <img src="chat.png" alt="" class="w-14 h-14 mx-auto mb-2">
+                  <h2 class="title-font font-medium text-2xl text-gray-900">Live Chat</h2>
+                  <p class="leading-relaxed">Real-Time Support</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- Team Section -->
+        <section class=" mb-10">
+            <h2 class="text-2xl font-semibold text-blue-600 mb-7" data-aos="fade-right" data-aos-duration="1000">Meet Our Team</h2>
+
+            <div class="flex -mx-4 justify-center">
+                <div class="w-1/4 px-4 mb-4 text-center" data-aos="flip-left">
+                    <img src="anup.jpg" alt="Team Member 1" class="rounded-full w-24 h-24 mx-auto">
+                    <h3 class="font-semibold text-lg text-gray-800">Anup C</h3>
+                    <p class="text-gray-600 mt-2">Frontend Developer</p>
+                </div>
+                <div class="w-1/4 px-4 mb-4 text-center" data-aos="flip-left" data-aos-duration="1000" >
+                    <img src="sam1.jpg" alt="Team Member 1" class="rounded-full w-24 h-24 mx-auto">
+                    <h3 class="font-semibold text-lg text-gray-800">Samuel</h3>
+                    <p class="text-gray-600 mt-2">Backend Developer</p>
+                </div>
+                <div class="w-1/4 px-4 mb-4 text-center" data-aos="flip-left" data-aos-duration="2000" >
+                    <img src="team1.jpg" alt="Team Member 1" class="rounded-full w-24 h-24 mx-auto">
+                    <h3 class="font-semibold text-lg text-gray-800">Tanvi</h3>
+                    <p class="text-gray-600 mt-2">Backend Developer</p>
+                </div>
+                <div class="w-1/4 px-4 mb-4 text-center" data-aos="flip-left" data-aos-duration="3000" >
+                    <img src="laren.jpg" alt="Team Member 1" class="rounded-full w-24 h-24 mx-auto">
+                    <h3 class="font-semibold text-lg text-gray-800">Laren Pinto</h3>
+                    <p class="text-gray-600 mt-2">Frontend Developer</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 text-white" data-aos="fade-up" data-aos-duration="1000">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between py-8" >
+            <!-- About Global Lane Section -->
+            <div class="mb-6 md:mb-0 pl-5">
+                <h3 class="text-lg font-bold mb-4">About Study Hive</h3>
+                <p class="text-sm max-w-xs">
+                    A collaborative learning platform built to enhance student productivity by enabling note-sharing,
+                    tracking
+                    learning progress, managing personal and group tasks, facilitating real-time communication through
+                    chat, and
+                    promoting focused study sessions using a Pomodoro timer for effective time management and goal
+                    achievement.
+                </p>
+            </div>
+
+            <!-- Quick Links Section -->
+            <div class="mb-6 md:mb-0">
+                <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="hover:underline">Home</a></li>
+                    <li><a href="aboutUs.html" class="hover:underline">About Us</a></li>
+                    <li><a href="contactUs.html" class="hover:underline">Contact Us</a></li>
+                    <li><a href="Features.html" class="hover:underline">Features</a></li>
+                    <li><a href="clientPage.html" class="hover:underline">Client Portal</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Us Section -->
+            <div class="mb-6 md:mb-0 pr-5">
+                <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+                <ul class="space-y-2">
+                    <li><a href="mailto:globallanemarketing@gmail.com" class="hover:underline">xyhdchdcbz@gmail.com</a>
+                    </li>
+                    <li><a href="tel:+91 8147052198" class="hover:underline">+91 8147xxxxx</a></li>
+                    <li><a href="tel:+966 564427890" class="hover:underline">+91 564xxxx</a></li>
+                </ul>
+
+                <!-- Social Media Icons -->
+                <div class="mt-4 flex space-x-2">
+                    <a href="#" class="hover:text-gray-400"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-gray-400"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-gray-400"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-gray-400"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <!-- Footer Bottom Text -->
+        <p class="text-sm text-center mt-4 pb-4">&copy; 2024 Study Hive. All rights reserved.</p>
+    </footer>
+    <script src="features.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+</body>
+</html>
