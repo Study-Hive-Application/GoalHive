@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyHive Chat</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+<!-- Full-Screen Chat Container -->
+<div class="bg-white w-full h-screen flex flex-col overflow-hidden">
+
+  <!-- Chat Header -->
+  <div class="bg-blue-600 text-white p-4 flex items-center justify-between">
+    <div class="flex items-center space-x-4">
+      <img src="https://via.placeholder.com/40" alt="User Avatar" class="w-10 h-10 rounded-full">
+      <div>
+        <h2 class="text-lg font-semibold">Study Hive Chat</h2>
+        <p class="text-sm text-blue-200">Group Chat</p>
+      </div>
+    </div>
+    <button class="text-white hover:text-gray-200 focus:outline-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12h.01m-6.01 0h.01M21 12c0 5.523-4.477 10-10 10S1 17.523 1 12 5.477 2 11 2s10 4.477 10 10zm-5 0a5 5 0 00-10 0 5 5 0 0010 0z"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Messages Section -->
+  <div id="messages" class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+    <!-- Example Messages -->
+    <div class="flex items-start space-x-2">
+      <img src="https://via.placeholder.com/35" alt="Avatar" class="w-8 h-8 rounded-full">
+      <div class="bg-gray-200 text-gray-800 p-3 rounded-lg max-w-xs">
+        <p class="text-sm">Hey everyone, welcome to the Study Hive group chat!</p>
+      </div>
+    </div>
+
+    <div class="flex items-end justify-end space-x-2">
+      <div class="bg-blue-600 text-white p-3 rounded-lg max-w-xs">
+        <p class="text-sm">Hi! Can anyone share notes for the last session?</p>
+      </div>
+      <img src="https://via.placeholder.com/35" alt="User Avatar" class="w-8 h-8 rounded-full">
+    </div>
+
+    <!-- File Sharing Message -->
+    <div class="flex items-start space-x-2">
+      <img src="https://via.placeholder.com/35" alt="Avatar" class="w-8 h-8 rounded-full">
+      <div class="bg-gray-200 text-gray-800 p-3 rounded-lg max-w-xs">
+        <p class="text-sm">Here’s the document you requested:</p>
+        <a href="#" class="text-blue-500 text-sm hover:underline">Download Notes.pdf</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Message Input Section -->
+  <div class="bg-gray-100 p-3 border-t border-gray-300 flex items-center space-x-2">
+    <!-- File Upload Button -->
+    <label class="text-gray-500 hover:text-gray-700 cursor-pointer">
+      <input type="file" class="hidden" id="fileInput">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M4 8V7a2 2 0 012-2h12a2 2 0 012 2v1M9 12h6"/>
+      </svg>
+    </label>
+
+    <!-- Message Input -->
+    <input type="text" id="messageInput" placeholder="Type a message..." class="flex-1 px-3 py-2 rounded-full border focus:outline-none focus:border-blue-500">
+    
+    <!-- Send Button -->
+    <button class="text-blue-600 hover:text-blue-800 focus:outline-none" onclick="sendMessage()">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h8m0 0l-4 4m4-4l-4-4"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<!-- Chat Script -->
+<script>
+  const messageInput = document.getElementById('messageInput');
+  const messages = document.getElementById('messages');
+
+  function sendMessage() {
+    if (messageInput.value.trim()) {
+      const messageDiv = document.createElement('div');
+      messageDiv.classList.add('flex', 'items-end', 'justify-end', 'space-x-2', 'mb-4');
+      messageDiv.innerHTML = `
+        <div class="bg-blue-600 text-white p-3 rounded-lg max-w-xs">
+          <p class="text-sm">${messageInput.value}</p>
+        </div>
+        <img src="https://via.placeholder.com/35" alt="User Avatar" class="w-8 h-8 rounded-full">
+      `;
+      messages.appendChild(messageDiv);
+      messages.scrollTop = messages.scrollHeight;
+      messageInput.value = '';
+    }
+  }
+</script>
+
+</body>
+</html>
