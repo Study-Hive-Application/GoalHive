@@ -59,3 +59,10 @@ function saveProfile() {
   document.getElementById("edit-button").classList.remove("hidden");
   document.getElementById("save-button").classList.add("hidden");
 }
+document.getElementById('menu-btn').onclick = function () {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  };
+  function toggleMenu() {
+    const menu = document.getElementById("menu");
+    menu.classList.toggle("hidden");
+  }
