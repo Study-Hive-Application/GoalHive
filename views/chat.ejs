@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudyHive Chat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100">
+    <!-- Full-Screen Chat Container -->
+    <div
+      class="bg-white w-full h-screen flex flex-col overflow-hidden relative"
+    >
+      <!-- Chat Header -->
+      <div class="bg-blue-600 text-white p-4 flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <img
+            src="https://via.placeholder.com/40"
+            alt="User Avatar"
+            class="w-10 h-10 rounded-full"
+          />
+          <div>
+            <h2 class="text-lg font-semibold">Study Hive Chat</h2>
+          </div>
+        </div>
+
+        <!-- SVG Icons Container -->
+        <div class="flex space-x-2">
+          <a href="index.html">
+            <button class="w-8 h-8 mr-3">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                <!-- SVG Path -->
+                <path
+                  fill="#ffffff"
+                  d="M36.8 192l566.3 0c20.3 0 36.8-16.5 36.8-36.8c0-7.3-2.2-14.4-6.2-20.4L558.2 21.4C549.3 8 534.4 0 518.3 0L121.7 0c-16 0-31 8-39.9 21.4L6.2 134.7c-4 6.1-6.2 13.2-6.2 20.4C0 175.5 16.5 192 36.8 192zM64 224l0 160 0 80c0 26.5 21.5 48 48 48l224 0c26.5 0 48-21.5 48-48l0-80 0-160-64 0 0 160-192 0 0-160-64 0zm448 0l0 256c0 17.7 14.3 32 32 32s32-14.3 32-32l0-256-64 0z"
+                />
+              </svg>
+            </button>
+          </a>
+          <button class="w-8 h-8" onclick="toggleSidebar()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <!-- SVG Path -->
+              <path
+                fill="#ffffff"
+                d="M512 240c0 114.9-114.6 208-256 208c-37.1 0-72.3-6.4-104.1-17.9c-11.9 8.7-31.3 20.6-54.3 30.6C73.6 471.1 44.7 480 16 480c-6.5 0-12.3-3.9-14.8-9.9c-2.5-6-1.1-12.8 3.4-17.4c0 0 0 0 0 0s0 0 0 0s0 0 0 0c0 0 0 0 0 0l.3-.3c.3-.3 .7-.7 1.3-1.4c1.1-1.2 2.8-3.1 4.9-5.7c4.1-5 9.6-12.4 15.2-21.6c10-16.6 19.5-38.4 21.4-62.9C17.7 326.8 0 285.1 0 240C0 125.1 114.6 32 256 32s256 93.1 256 208z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Messages Section -->
+      <div
+        id="messages"
+        class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50"
+      >
+        <!-- Example Messages -->
+        <div class="flex items-start space-x-2">
+          <img
+            src="https://via.placeholder.com/35"
+            alt="Avatar"
+            class="w-8 h-8 rounded-full"
+          />
+          <div class="bg-gray-200 text-gray-800 p-3 rounded-lg max-w-xs">
+            <p class="text-sm">
+              Hey everyone, welcome to the Study Hive group chat!
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-end justify-end space-x-2">
+          <div class="bg-blue-600 text-white p-3 rounded-lg max-w-xs">
+            <p class="text-sm">
+              Hi! Can anyone share notes for the last session?
+            </p>
+          </div>
+          <img
+            src="https://via.placeholder.com/35"
+            alt="User Avatar"
+            class="w-8 h-8 rounded-full"
+          />
+        </div>
+
+        <!-- File Sharing Message -->
+        <div class="flex items-start space-x-2">
+          <img
+            src="https://via.placeholder.com/35"
+            alt="Avatar"
+            class="w-8 h-8 rounded-full"
+          />
+          <div class="bg-gray-200 text-gray-800 p-3 rounded-lg max-w-xs">
+            <p class="text-sm">Here’s the document you requested:</p>
+            <a href="#" class="text-blue-500 text-sm hover:underline"
+              >Download Notes.pdf</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Message Input Section -->
+      <div
+        class="bg-gray-100 p-3 border-t border-gray-300 flex items-center space-x-2"
+      >
+        <!-- File Upload Button -->
+        <label class="text-gray-500 hover:text-gray-700 cursor-pointer">
+          <input type="file" class="hidden" id="fileInput" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M4 8V7a2 2 0 012-2h12a2 2 0 012 2v1M9 12h6"
+            />
+          </svg>
+        </label>
+
+        <!-- Message Input -->
+        <input
+          type="text"
+          id="messageInput"
+          placeholder="Type a message..."
+          class="flex-1 px-3 py-2 rounded-full border focus:outline-none focus:border-blue-500"
+        />
+
+        <!-- Send Button -->
+        <button
+          class="text-blue-600 hover:text-blue-800 focus:outline-none"
+          onclick="sendMessage()"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M8 12h8m0 0l-4 4m4-4l-4-4"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Sidebar for Recent Chats -->
+      <!-- Sidebar for Recent Chats -->
+      <div
+        id="sidebar"
+        class="fixed top-0 right-0 w-72 h-full bg-white shadow-lg transform translate-x-full transition-transform duration-300"
+      >
+        <div
+          class="flex items-center justify-between p-4 bg-blue-900 text-white text-lg font-semibold"
+        >
+          <span>Recent Chats</span>
+          <button onclick="closeSideBar()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5"
+              viewBox="0 0 512 512"
+            >
+              <!-- Font Awesome Icon -->
+              <path
+                d="M217.9 105.9L340.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L217.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1L32 320c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM352 416l64 0c17.7 0 32-14.3 32-32l0-256c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c53 0 96 43 96 96l0 256c0 53-43 96-96 96l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <ul class="p-4 space-y-4">
+          <li class="flex items-center space-x-2">
+            <img
+              src="https://via.placeholder.com/35"
+              alt="Avatar"
+              class="w-8 h-8 rounded-full"
+            />
+            <span>Anup C</span>
+          </li>
+          <li class="flex items-center space-x-2">
+            <img
+              src="https://via.placeholder.com/35"
+              alt="Avatar"
+              class="w-8 h-8 rounded-full"
+            />
+            <span>Laren</span>
+          </li>
+          <li class="flex items-center space-x-2">
+            <img
+              src="https://via.placeholder.com/35"
+              alt="Avatar"
+              class="w-8 h-8 rounded-full"
+            />
+            <span>Samuel</span>
+          </li>
+          <li class="flex items-center space-x-2">
+            <img
+              src="https://via.placeholder.com/35"
+              alt="Avatar"
+              class="w-8 h-8 rounded-full"
+            />
+            <span>Tanvi</span>
+          </li>
+        </ul>
+
+        <div class="flex flex-col min-h-screen">
+          <!-- Content -->
+          <div class="flex flex-col flex-grow">
+            <div class="p-4 flex space-x-2 justify-center">
+              <button
+                class="px-4 py-2 bg-blue-900 text-white rounded-md mb-4"
+                onclick="openModal('group')"
+              >
+                Create Group
+              </button>
+              <button
+                class="px-6 py-2 bg-blue-900 text-white rounded-md mb-4"
+                onclick="openModal('single')"
+              >
+                Single Chat
+              </button>
+            </div>
+          </div>
+
+          <!-- Modal -->
+          <div
+            id="modal"
+            class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden"
+          >
+            <div class="bg-white p-6 rounded-lg w-64">
+              <h2 id="modalTitle" class="text-xl font-bold mb-4"></h2>
+              <input
+                id="modalInput"
+                type="text"
+                class="w-full p-2 border border-gray-300 rounded-md mb-4"
+                placeholder=""
+              />
+
+              <input
+                id="extraInput"
+                type="text"
+                class="w-full p-2 border border-gray-300 rounded-md mb-4 hidden"
+                placeholder="Enter user's ID"
+              />
+
+              <!-- Container to Display Added User IDs -->
+              <div id="idList" class="mb-4 text-sm text-gray-700"></div>
+
+              <div class="flex justify-end space-x-2 mb-4">
+                <button
+                  id="cancelButton"
+                  onclick="toggleModal()"
+                  class="px-4 py-2 bg-gray-300 rounded-md hidden"
+                >
+                  Cancel
+                </button>
+                <button
+                  id="addButton"
+                  onclick="addUserId()"
+                  class="px-4 py-2 bg-blue-600 text-white rounded-md hidden"
+                >
+                  Add
+                </button>
+              </div>
+
+              <!-- Create Button at the Bottom -->
+              <button
+                id="createButton"
+                onclick="createGroup()"
+                class="w-full px-4 py-2 bg-green-600 text-white rounded-md hidden"
+              >
+                Create
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Script -->
+    <script src="../public/scripts/chat.js"></script>
+  </body>
+</html>
