@@ -1,218 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body
-    class="bg-cover bg-center h-screen"
-    style="background-image: url('ToDo\ list\ bg.jpg')"
-  >
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+</head>
+<body class="bg-cover bg-center h-screen"
+style="background-image: url('ToDo\ list\ bg.jpg');">
+
     <!-- navbar -->
     <div>
-      <header class="text-gray-400 bg-white body-font">
-        <div
-          class="container mx-50 flex flex-wrap p-3 items-center justify-between"
-        >
-          <!-- Logo Section -->
-          <a
-            href="#"
-            class="flex title-font font-medium items-center text-black mb-2 md:mb-0"
-          >
-            <img
-              src="/images/Logo-removebg-preview.png"
-              alt="logo"
-              class="w-11 h-11"
-            />
-            <span class="ml-3 text-xl text-black">Study Hive</span>
-          </a>
-
-          <!-- Hamburger Icon (shown on small screens) -->
-          <button
-            class="md:hidden flex items-center text-black focus:outline-none ml-auto"
-            onclick="toggleMenu()"
-          >
-            <svg
-              class="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              ></path>
-            </svg>
-          </button>
-
-          <!-- Navigation Links -->
-          <nav
-            id="menu"
-            class="hidden md:flex md:flex-grow md:items-center justify-center md:justify-end ml-62 text-base"
-          >
-            <a href="/index" class="mr-5 text-black hover:text-gray-800 pr-2"
-              >Home</a
-            >
-            <a href="#" class="mr-5 text-black hover:text-gray-800 pr-2"
-              >About us</a
-            >
-            <a href="#" class="mr-5 text-black hover:text-gray-800 pr-2"
-              >Contact us</a
-            >
-            <a href="/features" class="mr-5 text-black hover:text-gray-800 pr-2"
-              >Features</a
-            >
-            <a href="/signUp">
-              <button
-                class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0 text-white"
-              >
-                SignUp
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  class="w-4 h-4 ml-1"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7"></path>
-                </svg>
-              </button>
+        <header class="text-gray-400 bg-white body-font"  data-aos="fade-down" data-aos-duration="1000">
+          <div class="container mx-50 flex flex-wrap p-3 items-center justify-between">
+    
+            <!-- Logo Section -->
+            <a href="#" class="flex title-font font-medium items-center text-black mb-2 md:mb-0">
+              <img src="Logo-removebg-preview.png" alt="logo" class="w-11 h-11">
+              <span class="ml-3 text-xl text-black">Study Hive</span>
             </a>
-          </nav>
-        </div>
-      </header>
-    </div>
-
-    <div class="center-content pt-20">
-      <div
-        class="bg-white bg-opacity-90 p-6 rounded-lg shadow-lg w-full max-w-md mx-auto mt-10"
-      >
-        <!-- To-Do List Card with Reminder Feature -->
-        <div class="shadow-xl p-4 text-center hover:bg-gray-300 duration-700">
-          <i
-            class="fa-brands fa-wpforms animate-bounce pt-4"
-            style="font-size: 35px"
-          ></i>
-          <h3 class="text-xl font-bold pt-2 py-2 text-gray-800">ToDo List</h3>
-          <p class="pb-2">
-            Organize tasks efficiently and boost your productivity.
-          </p>
-
-          <!-- Add Task Input -->
-          <input
-            type="text"
-            id="task"
-            class="border p-2 rounded w-full mb-4"
-            placeholder="Add your task here"
-          />
-
-          <!-- Date and Time Input for Reminder -->
-          <input
-            type="datetime-local"
-            id="reminder-time"
-            class="border p-2 rounded w-full mb-4"
-            placeholder="Set reminder time"
-          />
-
-          <!-- Add Button -->
-          <button
-            onclick="addTask()"
-            class="bg-blue-900 text-white px-2 py-2 rounded hover:bg-blue-700 hover:scale-105 duration-500 w-full"
-          >
-            Add Task
-          </button>
-
-          <!-- Task List -->
-          <ul id="task-list" class="mt-4 text-left"></ul>
-        </div>
-      </div>
-    </div>
-
-    <br /><br /><br /><br /><br /><br />
-    <footer class="bg-gray-900 text-white">
-      <div
-        class="container mx-auto flex flex-col md:flex-row items-center justify-between py-8"
-      >
-        <!-- About Global Lane Section -->
-        <div class="mb-6 md:mb-0 pl-4">
-          <h3 class="text-lg font-bold mb-4">About Study Hive</h3>
-          <p class="text-sm max-w-xs">
-            A collaborative learning platform built to enhance student
-            productivity by enabling note-sharing, tracking learning progress,
-            managing personal and group tasks, facilitating real-time
-            communication through chat, and promoting focused study sessions
-            using a Pomodoro timer for effective time management and goal
-            achievement.
-          </p>
-        </div>
-
-        <div class="flex flex-row">
-          <!-- Quick Links Section -->
-          <div class="mb-6 md:mb-0 pr-16">
-            <h3 class="text-lg font-bold mb-4">Quick Links</h3>
-            <ul class="space-y-2">
-              <li><a href="#" class="hover:underline">Home</a></li>
-              <li><a href="#" class="hover:underline">About Us</a></li>
-              <li><a href="#" class="hover:underline">Contact Us</a></li>
-              <li><a href="#" class="hover:underline">Features</a></li>
-              <li><a href="#" class="hover:underline">Client Portal</a></li>
-            </ul>
+    
+            <!-- Hamburger Icon (shown on small screens) -->
+            <button class="md:hidden flex items-center text-black focus:outline-none ml-auto" onclick="toggleMenu()">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+    
+            <!-- Navigation Links -->
+            <nav id="menu" class="hidden md:flex md:flex-grow md:items-center justify-center md:justify-end ml-62 text-base">
+              <a href="index.html" class="mr-5 text-black hover:text-gray-800 pr-2">Home</a>
+              <a href="aboutUs.html" class="mr-5 text-black hover:text-gray-800 pr-2">About us</a>
+              <a href="contactUs.html" class="mr-5 text-black hover:text-gray-800 pr-2">Contact us</a>
+              <a href="Features.html" class="mr-5 text-black hover:text-gray-800 pr-2">Features</a>
+              <a href="signUp.html">
+                <button class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0 text-white">
+                  SignUp
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                  </svg>
+                </button>
+              </a>
+                <a href="clientPage.html" class="hidden">
+                <button
+                  class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0 text-white">
+                  DashBoard
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                  </svg>
+                </button>
+              </a>
+            </nav>
+            
           </div>
+        </header>
+      </div>
 
-          <!-- Contact Us Section -->
-          <div class="mb-6 md:mb-0 pr-5">
-            <h3 class="text-lg font-bold mb-4">Contact Us</h3>
-            <ul class="space-y-2">
-              <li>
-                <a
-                  href="mailto:globallanemarketing@gmail.com"
-                  class="hover:underline"
-                  >xyhdchdcbz@gmail.com</a
-                >
-              </li>
-              <li>
-                <a href="tel:+91 8147052198" class="hover:underline"
-                  >+91 8147xxxxx</a
-                >
-              </li>
-              <li>
-                <a href="tel:+966 564427890" class="hover:underline"
-                  >+91 564xxxx</a
-                >
-              </li>
-            </ul>
-
-            <!-- Social Media Icons -->
-            <div class="mt-4 flex space-x-2">
-              <a href="#" class="hover:text-gray-400"
-                ><i class="fab fa-facebook-f"></i
-              ></a>
-              <a href="#" class="hover:text-gray-400"
-                ><i class="fab fa-twitter"></i
-              ></a>
-              <a href="#" class="hover:text-gray-400"
-                ><i class="fab fa-instagram"></i
-              ></a>
-              <a href="#" class="hover:text-gray-400"
-                ><i class="fab fa-linkedin-in"></i
-              ></a>
+      <div class="center-content pt-20" data-aos="flip-up" data-aos-duration="1000">
+        <div class="bg-white bg-opacity-90 p-6 rounded-lg shadow-lg w-full max-w-md mx-auto mt-10">
+            <!-- To-Do List Card with Reminder Feature -->
+            <div class="shadow-xl p-4 text-center hover:bg-gray-300 duration-700">
+                <i class="fa-brands fa-wpforms animate-bounce pt-4" style="font-size: 35px"></i>
+                <h3 class="text-xl font-bold pt-2 py-2 text-gray-800">ToDo List</h3>
+                <p class="pb-2">Organize tasks efficiently and boost your productivity.</p>
+    
+                <!-- Add Task Input -->
+                <input type="text" id="task" class="border p-2 rounded w-full mb-4" placeholder="Add your task here">
+    
+                <!-- Date and Time Input for Reminder -->
+                <input type="datetime-local" id="reminder-time" class="border p-2 rounded w-full mb-4" placeholder="Set reminder time">
+    
+                <!-- Add Button -->
+                <button onclick="addTask()" class="bg-blue-900 text-white px-2 py-2 rounded hover:bg-blue-700 hover:scale-105 duration-500 w-full">Add Task</button>
+    
+                <!-- Task List -->
+                <ul id="task-list" class="mt-4 text-left"></ul>
             </div>
-          </div>
         </div>
-      </div>
-      <hr />
-      <!-- Footer Bottom Text -->
-      <p class="text-sm text-center mt-4 pb-4">
-        &copy; 2024 Study Hive. All rights reserved.
+    </div>
+    
+<br><br><br><br><br><br>
+<footer class="bg-gray-900 text-white" data-aos="fade-up" data-aos-duration="1000">
+  <div class="container mx-auto flex flex-col md:flex-row items-center justify-between py-8">
+    <!-- About Global Lane Section -->
+    <div class="mb-6 md:mb-0 pl-4">
+      <h3 class="text-lg font-bold mb-4">About Study Hive</h3>
+      <p class="text-sm max-w-xs">
+        A collaborative learning platform built to enhance student productivity by enabling note-sharing, tracking
+        learning progress, managing personal and group tasks, facilitating real-time communication through chat, and
+        promoting focused study sessions using a Pomodoro timer for effective time management and goal achievement.
       </p>
-    </footer>
-    <script src="/scripts/todo.js"></script>
-  </body>
+    </div>
+
+    <div class="flex flex-row">
+      <!-- Quick Links Section -->
+      <div class="mb-6 md:mb-0 pr-16">
+        <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+        <ul class="space-y-2">
+          <li><a href="index.html" class="hover:underline">Home</a></li>
+          <li><a href="aboutUs.html" class="hover:underline">About Us</a></li>
+          <li><a href="contactUs.html" class="hover:underline">Contact Us</a></li>
+          <li><a href="Features.html" class="hover:underline">Features</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Us Section -->
+      <div class="mb-6 md:mb-0 pr-5">
+        <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+        <ul class="space-y-2">
+          <li><a href="mailto:globallanemarketing@gmail.com" class="hover:underline">anupc9605@gmail.com</a></li>
+          <li><a href="tel:+91 8147052198" class="hover:underline">8762256023</a></li>
+          <li><a href="tel:+966 564427890" class="hover:underline">8618027420</a></li>
+        </ul>
+
+        <!-- Social Media Icons -->
+      </div>
+    </div>
+  </div>
+  <hr>
+  <!-- Footer Bottom Text -->
+  <p class="text-sm text-center mt-4 pb-4">&copy; 2024 Study Hive. All rights reserved.</p>
+</footer>
+      <script src="todo.js"></script>
+      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
 </html>

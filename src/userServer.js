@@ -1,17 +1,21 @@
 const express = require("express");
 const path = require("path");
+const http = require("http");
+const { Server } = require("socket.io");
 const dotenv = require("dotenv").config();
 const accessRouter = require("../routes/accessRouter.js");
 const connectDB = require("../config/dbConnection.js");
 const cookieParser = require("cookie-parser");
-const verifiedUserOnly = require("../middleware/userAuth.js");
 const userRouter = require("../routes/userRouter.js");
-import testConnection from "../config/supabase.js";
+const accessMiddleware = require("../middleware/accessAuth.js");
+
 const port = process.env.PORT || 3000;
 const app = express();
+const server = http.createServer(app);
+const io = new Server(server);
 
 //Connecting Database
-testConnection();
+connectDB();
 
 //Default Middleware
 app.use(express.json());
@@ -20,16 +24,23 @@ app.use(express.urlencoded({ extended: false }));
 
 //Setting View Engine For EJS Rendering - HTML Pages
 app.set("view engine", "ejs");
-app.set("views", path.resolve("../views"));
+app.set("views", path.join(__dirname, "../views"));
 
 //Static Folder
 app.use(express.static(path.resolve(__dirname, "../public")));
 
 //Routes
-app.use("/", accessRouter); //Signup and Login Routes
-app.use("/", verifiedUserOnly, userRouter); //Authorized User Routes
+app.use("/", accessMiddleware, accessRouter); //Signup and Login Routes
+app.use("/", accessMiddleware, userRouter); //Authorized User Routes
 
 //Port  Listening
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Server is running on port ${port}`);
+});
+
+//Socket Connection
+io.on("connection", (socket) => {
+  socket.on("send-message", (message) => {
+    socket.broadcast.emit("recieve-message", message);
+  });
 });

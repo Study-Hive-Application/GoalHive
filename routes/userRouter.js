@@ -3,6 +3,7 @@ const {
   dashboard,
   toDoList,
   pomodoro,
+  allChat,
 } = require("../controllers/userController");
 const Router = express.Router();
 
@@ -14,5 +15,8 @@ Router.route("/to-do-list").get(toDoList);
 
 //Pomodoro Routes
 Router.route("/pomodoro").get(pomodoro);
+
+//Chat Routes
+Router.route("/chat").get(allChat);
 
 module.exports = Router;

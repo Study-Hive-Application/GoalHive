@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Virtual Study Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- Navbar Section -->
+    <div>
+      <!-- Header-->
+      <%- include('partials/header') %>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="bg-blue-50 py-4">
+      <div
+        class="container mx-auto flex flex-col md:flex-row items-center px-5"
+      >
+        <!-- Text Content -->
+        <div
+          class="md:w-1/2 md:pr-12 mb-10 md:mb-0"
+          data-aos="fade-right"
+          data-aos-duration="1000"
+        >
+          <h1 class="text-4xl font-bold text-blue-600 mb-4">
+            About Study Hive
+          </h1>
+          <p class="text-gray-700 mb-4">
+            We are a passionate team dedicated to transforming student learning
+            through collaboration. Our platform, tailored for students of a
+            specific college, is designed to boost productivity, deepen
+            understanding, and build a supportive learning community.
+          </p>
+          <p class="text-gray-700 mb-4">
+            With features like real-time collaboration, resource sharing,
+            discussion forums, and personalized dashboards, our platform makes
+            learning more engaging and accessible. We believe that learning is
+            most effective when done together, fostering both academic success
+            and personal growth.
+          </p>
+          <p class="text-gray-700">
+            Our mission is to empower students, helping them gain confidence,
+            critical thinking skills, and a lifelong love of learning through a
+            shared, enriching journey.
+          </p>
+        </div>
+
+        <!-- Image -->
+        <div class="md:w-1/2" data-aos="fade-left" data-aos-duration="1000">
+          <img
+            src="images/img1.webp"
+            alt="About us"
+            class="rounded-lg shadow-lg w-full h-auto"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <main class="container mx-auto px-5">
+      <section class="text-gray-600 body-font">
+        <div class="container px-5 py-24 mx-auto">
+          <div class="flex flex-col text-center w-full mb-20">
+            <h1
+              class="sm:text-3xl text-2xl font-medium title-font text-gray-900 pb-3"
+              data-aos="fade-right"
+              data-aos-duration="1000"
+            >
+              Our Core Features
+            </h1>
+            <p
+              class="lg:w-2/3 mx-auto leading-relaxed text-base"
+              data-aos="fade-left"
+              data-aos-duration="1000"
+            >
+              Seamlessly organize tasks, set reminders, collaborate with peers,
+              track progress, customize themes, access resources, and enhance
+              productivity with ease.
+            </p>
+          </div>
+          <div
+            class="flex flex-wrap -m-4 text-center"
+            data-aos="fade-right"
+            data-aos-duration="1000"
+          >
+            <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+              <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+                <img
+                  src="images/Fea_Timer.png"
+                  alt=""
+                  class="w-14 h-14 mx-auto mb-2"
+                />
+                <h2 class="title-font font-medium text-2xl text-gray-900">
+                  Pomodoro
+                </h2>
+                <p class="leading-relaxed">Focused Productivity</p>
+              </div>
+            </div>
+            <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+              <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+                <img
+                  src="images/progress.png"
+                  alt=""
+                  class="w-14 h-14 mx-auto mb-2"
+                />
+                <h2 class="title-font font-medium text-2xl text-gray-900">
+                  Study Schedule
+                </h2>
+                <p class="leading-relaxed">Goal Monitoring</p>
+              </div>
+            </div>
+            <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+              <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+                <img
+                  src="images/to-do-list.png"
+                  alt=""
+                  class="w-14 h-14 mx-auto mb-2"
+                />
+                <h2 class="title-font font-medium text-2xl text-gray-900">
+                  ToDo List
+                </h2>
+                <p class="leading-relaxed">Task Management</p>
+              </div>
+            </div>
+            <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+              <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+                <img
+                  src="images/chat.png"
+                  alt=""
+                  class="w-14 h-14 mx-auto mb-2"
+                />
+                <h2 class="title-font font-medium text-2xl text-gray-900">
+                  Live Chat
+                </h2>
+                <p class="leading-relaxed">Real-Time Support</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Team Section -->
+      <section class="mb-10">
+        <h2
+          class="text-2xl font-semibold text-blue-600 mb-7"
+          data-aos="fade-right"
+          data-aos-duration="1000"
+        >
+          Meet Our Team
+        </h2>
+
+        <div class="flex -mx-4 justify-center">
+          <div class="w-1/4 px-4 mb-4 text-center" data-aos="flip-left">
+            <img
+              src="images/anup.jpg"
+              alt="Team Member 1"
+              class="rounded-full w-24 h-24 mx-auto"
+            />
+            <h3 class="font-semibold text-lg text-gray-800">Anup C</h3>
+            <p class="text-gray-600 mt-2">Frontend Developer</p>
+          </div>
+          <div
+            class="w-1/4 px-4 mb-4 text-center"
+            data-aos="flip-left"
+            data-aos-duration="1000"
+          >
+            <img
+              src="images/sam1.jpg"
+              alt="Team Member 1"
+              class="rounded-full w-24 h-24 mx-auto"
+            />
+            <h3 class="font-semibold text-lg text-gray-800">Samuel</h3>
+            <p class="text-gray-600 mt-2">Backend Developer</p>
+          </div>
+          <div
+            class="w-1/4 px-4 mb-4 text-center"
+            data-aos="flip-left"
+            data-aos-duration="2000"
+          >
+            <img
+              src="/images/Tanvi.jpg"
+              alt="Team Member 1"
+              class="rounded-full w-24 h-24 mx-auto"
+            />
+            <h3 class="font-semibold text-lg text-gray-800">Tanvi</h3>
+            <p class="text-gray-600 mt-2">Backend Developer</p>
+          </div>
+          <div
+            class="w-1/4 px-4 mb-4 text-center"
+            data-aos="flip-left"
+            data-aos-duration="3000"
+          >
+            <img
+              src="images/laren.jpg"
+              alt="Team Member 1"
+              class="rounded-full w-24 h-24 mx-auto"
+            />
+            <h3 class="font-semibold text-lg text-gray-800">Laren Pinto</h3>
+            <p class="text-gray-600 mt-2">Frontend Developer</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Section -->
+    <%- include('partials/footer') %>
+
+    <!--Scripts-->
+    <script src="features.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+const port = process.env.PORT || 3000;
+const io = require("socket.io")(port);
+
+io.on("connection", (socket) => {
+  socket.emit("message", "Hello World");
+});

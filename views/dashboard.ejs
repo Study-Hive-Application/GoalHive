@@ -75,16 +75,19 @@
             <img
               id="profile-image-preview"
               class="rounded-full w-24 h-24 mt-4"
-              src=""
+              src="<%=profileImage %>"
               alt="Profile Preview"
             />
-            <input
-              type="file"
-              id="profile-picture"
-              accept="image/*"
-              onchange="previewImage(event)"
-              class="mt-2"
-            />
+            <form action="/dasboard" method="put" enctype="multipart/form-data"">
+              <input
+                type="file"
+                name="profileImage"
+                id="profile-picture"
+                accept="image/*"
+                onchange="previewImage(event)"
+                class="mt-2"
+              />
+            </form>
           </div>
 
           <!-- Profile Details Section -->

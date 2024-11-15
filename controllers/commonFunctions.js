@@ -11,7 +11,7 @@ const jwtAndCookies = (res, id, name, email) => {
       },
     },
     process.env.ACCESS_TOKEN_SECRET,
-    { expiresIn: "20m" }
+    { expiresIn: "55m" }
   );
   //Creating Cookie
   res.cookie("Token", accessToken, {
