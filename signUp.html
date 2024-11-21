@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Hive - Login/Signup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+            background-image: url(signup_bg.jpg);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.2);
+            margin-left: 100px;
+            margin-right: 100px;
+            border-radius: 20px;
+        }
+        .forms-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+        }
+        .signup-form, .login-form {
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+        }
+        .overlay-container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            transition: transform 0.6s ease-in-out;
+            z-index: 100;
+        }
+        .overlay {
+            background: linear-gradient(to right, rgba(75, 52, 255, 1), rgba(67, 58, 247, 1));
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 0 0;
+            color: white;
+            position: relative;
+            left: -100%;
+            height: 100%;
+            width: 200%;
+            transform: translateX(0);
+            transition: transform 0.6s ease-in-out;
+        }
+        .container.right-panel-active .overlay-container {
+            transform: translateX(-100%);
+        }
+        .container.right-panel-active .overlay {
+            transform: translateX(50%);
+        }
+        .overlay-panel {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 40px;
+            text-align: center;
+            top: 0;
+            height: 100%;
+            width: 50%;
+            transform: translateX(0);
+            transition: transform 0.6s ease-in-out;
+        }
+        .overlay-left {
+            transform: translateX(-20%);
+        }
+        .overlay-right {
+            right: 0;
+            transform: translateX(0);
+        }
+        .container.right-panel-active .overlay-left {
+            transform: translateX(0);
+        }
+        .container.right-panel-active .overlay-right {
+            transform: translateX(20%);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+    <div class="container">
+        <div class="forms-container">
+            <div class="signup-form">
+                <form class="w-full max-w-xs">
+                    <h2 class="text-2xl font-bold mb-6 text-center">Create Account</h2>
+                    <div class="mb-4">
+                        <input type="text" placeholder="Name" class="w-full px-3 py-2 border rounded-md" required>
+                    </div>
+                    <div class="mb-4">
+                        <input type="email" placeholder="Email" class="w-full px-3 py-2 border rounded-md" required>
+                    </div>
+                    <div class="mb-4">
+                        <input type="password" placeholder="Password" class="w-full px-3 py-2 border rounded-md" required>
+                    </div>
+                    <button class="w-full bg-blue-600 text-white py-2 rounded-md">Sign Up</button>
+                </form>
+            </div>
+            <div class="login-form">
+                <form class="w-full max-w-xs">
+                    <h2 class="text-2xl font-bold mb-6 text-center">Sign In</h2>
+                    <div class="mb-4">
+                        <input type="email" placeholder="Email" class="w-full px-3 py-2 border rounded-md" required>
+                    </div>
+                    <div class="mb-4">
+                        <input type="password" placeholder="Password" class="w-full px-3 py-2 border rounded-md" required>
+                    </div>
+                    <button class="w-full bg-blue-600 text-white py-2 rounded-md">Sign In</button>
+                </form>
+            </div>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h2 class="text-2xl font-bold mb-4">Welcome Back!</h2>
+                    <p class="text-center mb-4">I currently do not have an account. Please click below to create one and get started!</p>
+                    <button id="signIn" class="border-white border text-white py-2 px-4 rounded-full"><< Sign Up</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h2 class="text-2xl font-bold mb-4">Hello, Friend!</h2>
+                    <p class="text-center mb-4">Do you already have an account? Please login with your personal info</p>
+                    <button id="signUp" class="border-white border text-white py-2 px-4 rounded-full">Sign In >></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const container = document.querySelector('.container');
+
+        signUpButton.addEventListener('click', () => {
+            container.classList.add('right-panel-active');
+        });
+
+        signInButton.addEventListener('click', () => {
+            container.classList.remove('right-panel-active');
+        });
+    </script>
+</body>
+</html>

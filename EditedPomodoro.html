@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Pomodoro Timer</title>
+    <style>
+        .video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            opacity: 0.8;
+            
+        }
+        .mode-btn {
+            background-color: transparent;
+            border: 2px solid;
+            transition: all 0.3s ease;
+        }
+        .mode-btn[data-mode="pomodoro"] {
+            border-color: theme('colors.blue.500');
+            color: theme('colors.blue.500');
+        }
+        .mode-btn[data-mode="short-break"] {
+            border-color: theme('colors.green.500');
+            color: theme('colors.green.500');
+        }
+        .mode-btn[data-mode="long-break"] {
+            border-color: theme('colors.red.500');
+            color: theme('colors.red.500');
+        }
+        .mode-btn:hover {
+            background-color: rgb(108, 108, 241);
+        }
+        .mode-btn[data-mode="pomodoro"]:hover {
+            background-color: theme('colors.blue.500');
+        }
+        .mode-btn[data-mode="short-break"]:hover {
+            background-color: theme('colors.green.500');
+        }
+        .mode-btn[data-mode="long-break"]:hover {
+            background-color: theme('colors.red.500');
+        }
+        .transparent-navbar {
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Navigation Bar -->
+    <div>
+        <header class="text-gray-400 transparent-navbar body-font" data-aos="fade-down" data-aos-duration="1000">
+            <div class="container mx-50 flex flex-wrap p-3 items-center justify-between">
+
+                <!-- Logo Section -->
+                <a href="#" class="flex title-font font-medium items-center text-black mb-2 md:mb-0">
+                    <img src="Logo-removebg-preview.png" alt="logo" class="w-11 h-11">
+                    <span class="ml-3 text-xl text-black">Study Hive</span>
+                </a>
+
+                <!-- Hamburger Icon (shown on small screens) -->
+                <button class="md:hidden flex items-center text-black focus:outline-none ml-auto"
+                    onclick="toggleMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+
+                <!-- Navigation Links -->
+                <nav id="menu"
+                    class="hidden md:flex md:flex-grow md:items-center justify-center md:justify-end ml-62 text-base">
+                    <a href="index.html" class="mr-5 text-black hover:text-gray-800 pr-2">Home</a>
+                    <a href="aboutUs.html" class="mr-5 text-black hover:text-gray-800 pr-2">About us</a>
+                    <a href="contactUs.html" class="mr-5 text-black hover:text-gray-800 pr-2">Contact us</a>
+                    <a href="Features.html" class="mr-5 text-black hover:text-gray-800 pr-2">Features</a>
+                    <a href="signUp.html">
+                        <button
+                            class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0 text-white">
+                            SignUp
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                    </a>
+                    <a href="clientPage.html" class="hidden">
+                        <button
+                            class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0 text-white">
+                            DashBoard
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                    </a>
+                </nav>
+
+            </div>
+        </header>
+    </div>
+
+    <!-- Full Background Video -->
+    <video autoplay loop muted class="video-background">
+        <source id="pomo_bgvid" src="pomo_bgvid.mp4" type="video/mp4">
+    </video>
+
+    <!-- Timer Container -->
+    <div class="flex-grow flex items-center justify-center">
+        <div class="text-center">
+            <!-- Mode Buttons -->
+            <div id="mode-buttons" class="flex justify-center space-x-4">
+                <button data-mode="pomodoro" class="mode-btn px-4 py-2 rounded-lg">
+                    Pomodoro
+                </button>
+                <button data-mode="short-break" class="mode-btn px-4 py-2 rounded-lg">
+                    Short Break
+                </button>
+                <button data-mode="long-break" class="mode-btn px-4 py-2 rounded-lg">
+                    Long Break
+                </button>
+            </div>
+
+            <!-- Timer Display -->
+            <div id="timer" class="text-[150px] font-bold text-gray-800">45:00</div>
+
+            <!-- Control Buttons -->
+            <div class="flex justify-center space-x-4">
+                <button id="start-btn" class="px-6 py-3 bg-green-600 text-white rounded-full">
+                    Start
+                </button>
+                <button id="reset-btn" class="px-6 py-3 bg-red-600 text-white rounded-full">
+                    Reset
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class PomodoroTimer {
+            constructor() {
+                this.timer = document.getElementById('timer');
+                this.startBtn = document.getElementById('start-btn');
+                this.resetBtn = document.getElementById('reset-btn');
+                this.modeButtons = document.querySelectorAll('.mode-btn');
+
+                this.times = {
+                    'pomodoro': 45 * 60,
+                    'short-break': 5 * 60,
+                    'long-break': 15 * 60
+                };
+
+                this.currentMode = 'pomodoro';
+                this.timeRemaining = this.times[this.currentMode];
+                this.intervalId = null;
+                this.isRunning = false;
+
+                this.initEventListeners();
+            }
+
+            initEventListeners() {
+                this.startBtn.addEventListener('click', () => this.toggleTimer());
+                this.resetBtn.addEventListener('click', () => this.resetTimer());
+                
+                this.modeButtons.forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const mode = e.target.getAttribute('data-mode');
+                        this.changeMode(mode);
+                    });
+                });
+            }
+
+            toggleTimer() {
+                if (this.isRunning) {
+                    clearInterval(this.intervalId);
+                    this.startBtn.textContent = 'Start';
+                } else {
+                    this.intervalId = setInterval(() => this.countdown(), 1000);
+                    this.startBtn.textContent = 'Pause';
+                }
+                this.isRunning = !this.isRunning;
+            }
+
+            countdown() {
+                if (this.timeRemaining > 0) {
+                    this.timeRemaining--;
+                    this.updateDisplay();
+                } else {
+                    clearInterval(this.intervalId);
+                    this.isRunning = false;
+                    this.startBtn.textContent = 'Start';
+                }
+            }
+
+            resetTimer() {
+                clearInterval(this.intervalId);
+                this.timeRemaining = this.times[this.currentMode];
+                this.updateDisplay();
+                this.isRunning = false;
+                this.startBtn.textContent = 'Start';
+            }
+
+            changeMode(mode) {
+                this.modeButtons.forEach(btn => {
+                    btn.classList.remove('bg-blue-700', 'bg-green-700', 'bg-red-700');
+                });
+
+                const selectedBtn = document.querySelector(`[data-mode="${mode}"]`);
+                selectedBtn.classList.add('bg-blue-700');
+
+                this.currentMode = mode;
+                this.timeRemaining = this.times[mode];
+                this.updateDisplay();
+                
+                if (this.isRunning) {
+                    clearInterval(this.intervalId);
+                    this.isRunning = false;
+                    this.startBtn.textContent = 'Start';
+                }
+            }
+
+            updateDisplay() {
+                const minutes = Math.floor(this.timeRemaining / 60);
+                const seconds = this.timeRemaining % 60;
+                this.timer.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+        }
+
+        new PomodoroTimer();
+    </script>
+</body>
+</html>
