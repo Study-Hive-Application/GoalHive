@@ -1,0 +1,2 @@
+// Single Chat
+const singleChat = () => {};

@@ -12,14 +12,14 @@ const dashboard = asyncHandler(async (req, res) => {
   res.render("dashboard", { name: user.name, profileImage: user.profileImage });
 });
 
-//@desc Dashboard Edit
-//@route Get /edit
+//@desc Dashboard Profile
+//@route Get /profile
 //@access Private
-const edit = asyncHandler(async (req, res) => {
+const profile = asyncHandler(async (req, res) => {
   const token = req.cookies.Token;
   const decode = jwt.decode(token);
   const user = await USER.findOne({ email: decode.user.email });
-  res.render("dashboard", { name: user.name, profileImage: user.profileImage });
+  res.render("profile", { profileImage: user.profileImage });
 });
 
 //@desc To-Do List
@@ -39,8 +39,11 @@ const pomodoro = asyncHandler(async (req, res) => {
 //@desc Chat
 //@route Get /chat
 //@access Private
-const allChat = (req, res) => {
-  res.render("chat");
-};
+const chat = asyncHandler(async (req, res) => {
+  const token = req.cookies.Token;
+  const decode = jwt.decode(token);
+  const user = await USER.findOne({ email: decode.user.email });
+  res.render("chat", { userId: user.userId, chatName: "StudyHive" });
+});
 
-module.exports = { dashboard, toDoList, pomodoro, allChat };
+module.exports = { dashboard, toDoList, pomodoro, chat, profile };

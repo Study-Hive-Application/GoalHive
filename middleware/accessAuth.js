@@ -5,6 +5,7 @@ const accessMiddleware = (req, res, next) => {
   const token = req.cookies.Token;
   //Setting false as Default
   req.isAuthenticated = false;
+
   if (token) {
     try {
       // Verifying token
@@ -12,7 +13,10 @@ const accessMiddleware = (req, res, next) => {
       req.user = decoded.user; // Attach user info from token to request object
       req.isAuthenticated = true;
     } catch (err) {
-      res.send("Invalid or expired token.");
+      res.render("login", {
+        errorMessage: null,
+        isAuthenticated: req.isAuthenticated,
+      });
     }
   }
 

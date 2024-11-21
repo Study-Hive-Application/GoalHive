@@ -1,5 +1,6 @@
 const USER = require("../models/userModel");
 const bcrypt = require("bcrypt");
+const { nanoid } = require("nanoid");
 const asyncHandler = require("express-async-handler");
 const { jwtAndCookies } = require("./commonFunctions");
 
@@ -67,8 +68,10 @@ const createUser = asyncHandler(async (req, res) => {
   }
   const hashedPassword = await bcrypt.hash(password, 10); // Hashing Password
   const userDetails = {
+    userId: nanoid(10),
     name,
     email,
+
     password: hashedPassword,
   };
   const newUser = await USER.create(userDetails); // Storing Details in DB

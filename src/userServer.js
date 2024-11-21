@@ -1,6 +1,6 @@
 const express = require("express");
-const path = require("path");
 const http = require("http");
+const path = require("path");
 const { Server } = require("socket.io");
 const dotenv = require("dotenv").config();
 const accessRouter = require("../routes/accessRouter.js");
@@ -38,9 +38,11 @@ server.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
-//Socket Connection
+//Socket Connections
 io.on("connection", (socket) => {
-  socket.on("send-message", (message) => {
-    socket.broadcast.emit("recieve-message", message);
+  console.log("User connected : ", socket.id);
+
+  socket.on("sender-text", (message) => {
+    socket.broadcast.emit("re-message", message);
   });
 });

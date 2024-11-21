@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+
+    <!-- TailwindCSS and AOS (for animations) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+      // Initialize AOS for animations
+      document.addEventListener("DOMContentLoaded", function () {
+        AOS.init();
+      });
+    </script>
+  </head>
+
+  <body class="bg-gray-100">
+    <!-- Profile Section -->
+    <section
+      class="bg-white p-6 rounded-lg shadow-lg mb-8 max-w-2xl mx-auto mt-32"
+      data-aos="fade-up"
+      data-aos-duration="1000"
+    >
+      <div class="flex flex-col lg:flex-row lg:items-start pt-2">
+        <!-- Profile Picture Section -->
+
+        <div class="lg:mr-8 mb-4 lg:mb-0 text-center lg:text-left">
+          <!-- Added the correct id -->
+          <img
+            id="profile-image-preview"
+            class="rounded-full w-36 h-36 mx-auto lg:mx-0 mt-4"
+            src="<%=profileImage  %>"
+            alt="Profile Preview"
+          />
+          <form action="/edit" method="post">
+            <input
+              type="file"
+              id="profile-picture"
+              accept="image/*"
+              class="hidden mt-4 bg-gray-100 px-4 py-2 text-sm text-gray-600 rounded-md cursor-pointer border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              onchange="previewImage(event)"
+            />
+          </form>
+        </div>
+
+        <!-- Profile Details Section -->
+        <div class="lg:flex-1">
+          <!-- Profile Header -->
+          <div class="mb-1">
+            <span class="text-blue-600 font-medium">Name:</span>
+            <h2
+              class="text-3xl font-semibold text-gray-800 mb-2"
+              id="name-display"
+            >
+              name
+            </h2>
+          </div>
+          <form action="/edit" method="post">
+            <input
+              type="text"
+              class="hidden w-full text-3xl font-semibold mb-2 p-3 border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              id="name-input"
+              placeholder="Enter Name"
+            />
+          </form>
+
+          <div class="mb-5 mt-4">
+            <span class="text-blue-600 font-medium">Email:</span>
+            <p class="text-gray-600 mb-2 text-lg" id="email-display">
+              xyz@bmail.com
+            </p>
+          </div>
+
+          <!-- Phone Number -->
+          <form>
+            <div class="mb-1">
+              <span class="text-blue-600 font-medium">Phone No:</span>
+              <p class="text-gray-600 mb-2 text-lg" id="phone-display">
+                91-xxxxxxxxxx
+              </p>
+            </div>
+          </form>
+          <form action="/edit" method="post">
+            <input
+              type="text"
+              class="hidden w-full text-lg mb-2 p-3 border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              id="phone-input"
+              placeholder="Enter Phone"
+            />
+          </form>
+
+          <!-- Bio Section -->
+
+          <div class="mb-1 mt-4">
+            <span class="text-blue-600 font-medium">Bio:</span>
+            <p class="text-gray-600 mb-2 text-lg" id="bio-display">
+              Bio: Passionate about coding and physics!
+            </p>
+          </div>
+          <form action="/edit" method="post">
+            <input
+              type="text"
+              class="hidden w-full text-lg mb-2 p-3 border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              id="bio-input"
+              placeholder="Enter Bio"
+            />
+          </form>
+
+          <!-- Skills Section -->
+
+          <div class="mb-1 mt-4">
+            <span class="text-blue-600 font-medium">Skills:</span>
+            <span id="skills-display" class="text-gray-700"
+              >Web Development</span
+            >
+          </div>
+          <form action="/edit" method="post">
+            <input
+              type="text"
+              class="hidden w-full mt-2 p-3 border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              id="skills-input"
+              placeholder="Enter Skills"
+            />
+          </form>
+
+          <!-- Subjects Section -->
+          <div class="mb-1 mt-4">
+            <span class="text-blue-600 font-medium">Subjects:</span>
+            <span id="subjects-display" class="text-gray-700"
+              >Math, Physics, Coding</span
+            >
+          </div>
+
+          <div
+            id="subjects-dropdown"
+            class="hidden mt-2 p-3 border-2 border-gray-300 rounded-md"
+          >
+            <label class="block mb-1 text-blue-600">Select Subjects:</label>
+            <form id="subjects-form" onsubmit="return false;">
+              <label class="block"
+                ><input type="checkbox" value="Math" class="mr-2" /> Math</label
+              >
+              <label class="block"
+                ><input type="checkbox" value="Physics" class="mr-2" />
+                Physics</label
+              >
+              <label class="block"
+                ><input type="checkbox" value="Coding" class="mr-2" />
+                Coding</label
+              >
+              <label class="block"
+                ><input type="checkbox" value="Chemistry" class="mr-2" />
+                Chemistry</label
+              >
+              <label class="block"
+                ><input type="checkbox" value="Biology" class="mr-2" />
+                Biology</label
+              >
+              <label class="block"
+                ><input type="checkbox" value="Computer Science" class="mr-2" />
+                Computer Science</label
+              >
+              <label class="block">
+                <input
+                  type="checkbox"
+                  value="Other"
+                  class="mr-2"
+                  onclick="displayInput()"
+                />
+                Other
+              </label>
+              <!-- Custom Subject Input Section -->
+              <div id="custom-subject-section" class="hidden mt-4">
+                <input
+                  type="text"
+                  id="custom-subject"
+                  placeholder="Enter custom subject"
+                  class="w-full mb-2 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <button
+                  type="button"
+                  onclick="addCustomSubject()"
+                  class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+                >
+                  Add Subject
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Edit and Save Buttons -->
+          <div class="flex mt-6">
+            <button
+              type="button"
+              onclick="editProfile()"
+              class="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition ease-in-out duration-200 mr-4"
+              id="edit-button"
+            >
+              Edit
+            </button>
+            <button
+              type="button"
+              onclick="saveProfile()"
+              class="hidden bg-green-500 text-white px-6 py-2 rounded-md hover:bg-green-600 transition ease-in-out duration-200"
+              id="save-button"
+            >
+              Save
+            </button>
+            <a href="/profile" class="ml-4">
+              <button
+                type="button"
+                class="bg-red-500 text-white px-6 py-2 rounded-md hover:bg-red-700 transition ease-in-out duration-200"
+                id="back-button"
+              >
+                Back
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JavaScript Functions -->
+    <script src="scripts/profile.js"></script>
+  </body>
+</html>

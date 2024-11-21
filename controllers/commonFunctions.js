@@ -16,7 +16,7 @@ const jwtAndCookies = (res, id, name, email) => {
   //Creating Cookie
   res.cookie("Token", accessToken, {
     httpOnly: true,
-    secure: "production",
+    secure: true,
     sameSite: "strict",
     maxAge: 5 * 60 * 60 * 1000, // 5 hours in milliseconds
   });
