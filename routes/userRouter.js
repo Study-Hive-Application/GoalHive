@@ -3,6 +3,7 @@ const {
   dashboard,
   toDoList,
   pomodoro,
+  updateUserProfile,
 } = require("../controllers/userController");
 const Router = express.Router();
 
@@ -14,5 +15,9 @@ Router.route("/to-do-list").get(toDoList);
 
 //Pomodoro Routes
 Router.route("/pomodoro").get(pomodoro);
+
+//UpdateUser Routes
+const { protect } = require("../middleware/userAuth");
+Router.put("/update", protect, updateUserProfile);
 
 module.exports = Router;
