@@ -35,7 +35,7 @@ const signupAccount = asyncHandler(async (req, res) => {
 //@route Get /signup and /login
 //@access Public
 const loginAccount = asyncHandler(async (req, res) => {
-  //const { email, password } = req.body;
+  const { email, password } = req.body;
   const existingUser = await USER.findOne({ email }); //Checking If Email Exists
   if (!existingUser) {
     return res.status(400).json({ errorMessage: "Email does not exist" });
