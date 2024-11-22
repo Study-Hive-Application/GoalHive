@@ -5,6 +5,7 @@ const {
   pomodoro,
   chat,
   profile,
+  updateProfile,
 } = require("../controllers/userController");
 const Router = express.Router();
 
@@ -12,7 +13,7 @@ const Router = express.Router();
 Router.route("/dashboard").get(dashboard);
 
 //Profile Routes
-Router.route("/profile").get(profile);
+Router.route("/profile").get(profile).put(updateProfile);
 
 //TO-DO LIST Routes
 Router.route("/to-do-list").get(toDoList);

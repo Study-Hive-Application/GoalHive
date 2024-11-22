@@ -1,0 +1,44 @@
+.video-background {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+  opacity: 0.8;
+}
+.mode-btn {
+  background-color: transparent;
+  border: 2px solid;
+  transition: all 0.3s ease;
+}
+.mode-btn[data-mode="pomodoro"] {
+  border-color: theme("colors.blue.500");
+  color: theme("colors.blue.500");
+}
+.mode-btn[data-mode="short-break"] {
+  border-color: theme("colors.green.500");
+  color: theme("colors.green.500");
+}
+.mode-btn[data-mode="long-break"] {
+  border-color: theme("colors.red.500");
+  color: theme("colors.red.500");
+}
+.mode-btn:hover {
+  background-color: rgb(108, 108, 241);
+}
+.mode-btn[data-mode="pomodoro"]:hover {
+  background-color: theme("colors.blue.500");
+}
+.mode-btn[data-mode="short-break"]:hover {
+  background-color: theme("colors.green.500");
+}
+.mode-btn[data-mode="long-break"]:hover {
+  background-color: theme("colors.red.500");
+}
+.transparent-navbar {
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+}

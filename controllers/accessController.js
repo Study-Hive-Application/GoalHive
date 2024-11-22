@@ -1,6 +1,5 @@
 const USER = require("../models/userModel");
 const bcrypt = require("bcrypt");
-const { nanoid } = require("nanoid");
 const asyncHandler = require("express-async-handler");
 const { jwtAndCookies } = require("./commonFunctions");
 
@@ -11,25 +10,43 @@ const homePage = (req, res) => {
   res.render("index", { isAuthenticated: req.isAuthenticated });
 };
 
-//@desc Signup Page
-//@route POST /user/signup
+//@desc Signup And Login Page
+//@route Get /signup and /login
 //@access Public
-const getSignupPage = (req, res) => {
-  res.render("signup", {
-    errorMessage: null,
-    isAuthenticated: req.isAuthenticated,
-  });
+const accountPage = (req, res) => {
+  res.render("account");
 };
 
-//@desc Login Page
-//@route GET /login
+//@desc Signup And Login Page
+//@route Get /signup and /login
 //@access Public
-const getLoginPage = async (req, res) => {
-  res.render("login", {
-    errorMessage: null,
-    isAuthenticated: req.isAuthenticated,
-  });
-};
+const signupAccount = asyncHandler(async (req, res) => {
+  //const { name, email, password } = req.body;
+  const hashedPassword = await bcrypt.hash(password, 10); // Hashing Password
+  const existingUser = await USER.findOne({ email: email }); // Checking If User Already Exists
+  if (existingUser) {
+    return res.status(400).json({ errorMessage: "Email already exists" });
+  }
+  const newUser = await USER.create({ name, email, password: hashedPassword }); // Storing Data In Database
+  jwtAndCookies(res, newUser.email); // Creating Jwt Token and Cookie
+});
+
+//@desc Signup And Login Page
+//@route Get /signup and /login
+//@access Public
+const loginAccount = asyncHandler(async (req, res) => {
+  //const { email, password } = req.body;
+  const existingUser = await USER.findOne({ email }); //Checking If Email Exists
+  if (!existingUser) {
+    return res.status(400).json({ errorMessage: "Email does not exist" });
+  }
+
+  const correctPassword = await bcrypt.compare(password, user.password); // Compare Passwords
+  if (!correctPassword) {
+    return res.status(400).json({ errorMessage: "Password is incorrect" });
+  }
+  jwtAndCookies(res, existingUser.email); // Creating Jwt Token and Cookie
+});
 
 //@desc Features
 //@route GET /features
@@ -52,65 +69,10 @@ const getContactUsPage = (req, res) => {
   res.render("contact", { isAuthenticated: req.isAuthenticated });
 };
 
-//@desc Create User
-//@route POST /user/signup
-//@access Public
-const createUser = asyncHandler(async (req, res) => {
-  const { name, email, password } = req.body;
-
-  // Check is Email Already Created
-  const checkEmail = await USER.findOne({ email });
-  if (checkEmail) {
-    return res.render("signup", {
-      errorMessage: "Email Already Exists",
-      isAuthenticated: req.isAuthenticated,
-    });
-  }
-  const hashedPassword = await bcrypt.hash(password, 10); // Hashing Password
-  const userDetails = {
-    userId: nanoid(10),
-    name,
-    email,
-
-    password: hashedPassword,
-  };
-  const newUser = await USER.create(userDetails); // Storing Details in DB
-
-  // Creating a Jwt Token and Cookie
-  jwtAndCookies(res, newUser._id, newUser.name, newUser.email);
-});
-
-//@desc Check Login Details
-//@route POST /login
-//@access Public
-const loginUser = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
-
-  //Check if Email Does Not Exist
-  const user = await USER.findOne({ email });
-  if (!user) {
-    return res.render("login", {
-      errorMessage: "Check your Email or Signup Now!!!",
-      isAuthenticated: req.isAuthenticated,
-    });
-  }
-  //Check if Password Matches
-  const isPasswordCorrect = await bcrypt.compare(password, user.password);
-  if (!isPasswordCorrect) {
-    return res.render("login", {
-      errorMessage: "Incorrect Password",
-      isAuthenticated: req.isAuthenticated,
-    });
-  }
-  // Creating a Jwt Token and Cookie
-  jwtAndCookies(res, user._id, user.name, user.email);
-});
-
 module.exports = {
-  getSignupPage,
-  getLoginPage,
-  createUser,
-  loginUser,
+  accountPage,
+  signupAccount,
+  loginAccount,
   homePage,
   getFeaturesPage,
   getAboutUsPage,

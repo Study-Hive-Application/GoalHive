@@ -1,127 +1,92 @@
-// Get DOM elements
-const totalTimeInput = document.getElementById("total-time-input");
-const focusTimeDisplay = document.getElementById("focus-time");
-const timerDisplay = document.getElementById("timer-display");
-const progressCircle = document.getElementById("progress-circle");
-const startPauseButton = document.getElementById("start-pause");
-const resetButton = document.getElementById("reset");
-const resetPopup = document.getElementById("reset-popup");
-const confirmResetButton = document.getElementById("confirm-reset");
-const cancelResetButton = document.getElementById("cancel-reset");
-const decreaseFocusButton = document.getElementById("decrease-focus");
-const increaseFocusButton = document.getElementById("increase-focus");
-const taskInput = document.getElementById("task-input");
-const taskTimeInput = document.getElementById("task-time-input");
-const addTaskButton = document.getElementById("add-task");
-const taskList = document.getElementById("task-list");
+class PomodoroTimer {
+  constructor() {
+    this.timer = document.getElementById("timer");
+    this.startBtn = document.getElementById("start-btn");
+    this.resetBtn = document.getElementById("reset-btn");
+    this.modeButtons = document.querySelectorAll(".mode-btn");
 
-// Initial variables
-let focusTime = 25; // Focus time in minutes
-let currentSessionTime = focusTime * 60; // Current session time in seconds
-let timerInterval = null;
-let isRunning = false;
-let focusSessions = 0; // Count of completed focus sessions
+    this.times = {
+      pomodoro: 45 * 60,
+      "short-break": 5 * 60,
+      "long-break": 15 * 60,
+    };
 
-// Functions
+    this.currentMode = "pomodoro";
+    this.timeRemaining = this.times[this.currentMode];
+    this.intervalId = null;
+    this.isRunning = false;
 
-// Update Timer Display
-function updateTimerDisplay() {
-  const minutes = Math.floor(currentSessionTime / 60);
-  const seconds = currentSessionTime % 60;
-  timerDisplay.textContent = `${minutes < 10 ? "0" : ""}${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
-}
-
-// Update Circle Progress
-function updateProgressCircle() {
-  const progress = ((focusTime * 60 - currentSessionTime) / (focusTime * 60)) * 282; // Circle circumference: 2 * π * r ≈ 282
-  progressCircle.style.strokeDashoffset = 282 - progress;
-}
-
-// Start/Pause Timer
-function toggleTimer() {
-  if (isRunning) {
-    clearInterval(timerInterval);
-    startPauseButton.textContent = "Start";
-  } else {
-    timerInterval = setInterval(() => {
-      if (currentSessionTime > 0) {
-        currentSessionTime--;
-        updateTimerDisplay();
-        updateProgressCircle();
-      } else {
-        clearInterval(timerInterval);
-        focusSessions++;
-        alert("Session completed! Take a break.");
-        resetTimer();
-      }
-    }, 1000);
-    startPauseButton.textContent = "Pause";
+    this.initEventListeners();
   }
-  isRunning = !isRunning;
-}
 
-// Reset Timer
-function resetTimer() {
-  clearInterval(timerInterval);
-  currentSessionTime = focusTime * 60;
-  isRunning = false;
-  updateTimerDisplay();
-  updateProgressCircle();
-  startPauseButton.textContent = "Start";
-  focusSessions = 0;
-}
+  initEventListeners() {
+    this.startBtn.addEventListener("click", () => this.toggleTimer());
+    this.resetBtn.addEventListener("click", () => this.resetTimer());
 
-// Open Reset Popup
-function openResetPopup() {
-  resetPopup.classList.remove("hidden");
-}
+    this.modeButtons.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const mode = e.target.getAttribute("data-mode");
+        this.changeMode(mode);
+      });
+    });
+  }
 
-// Close Reset Popup
-function closeResetPopup() {
-  resetPopup.classList.add("hidden");
-}
+  toggleTimer() {
+    if (this.isRunning) {
+      clearInterval(this.intervalId);
+      this.startBtn.textContent = "Start";
+    } else {
+      this.intervalId = setInterval(() => this.countdown(), 1000);
+      this.startBtn.textContent = "Pause";
+    }
+    this.isRunning = !this.isRunning;
+  }
 
-// Confirm Reset
-confirmResetButton.addEventListener("click", () => {
-  resetTimer();
-  closeResetPopup();
-});
+  countdown() {
+    if (this.timeRemaining > 0) {
+      this.timeRemaining--;
+      this.updateDisplay();
+    } else {
+      clearInterval(this.intervalId);
+      this.isRunning = false;
+      this.startBtn.textContent = "Start";
+    }
+  }
 
-// Cancel Reset
-cancelResetButton.addEventListener("click", closeResetPopup);
+  resetTimer() {
+    clearInterval(this.intervalId);
+    this.timeRemaining = this.times[this.currentMode];
+    this.updateDisplay();
+    this.isRunning = false;
+    this.startBtn.textContent = "Start";
+  }
 
-// Increase or Decrease Focus Time
-function adjustFocusTime(amount) {
-  if (focusTime + amount >= 5 && focusTime + amount <= 90) {
-    focusTime += amount;
-    currentSessionTime = focusTime * 60;
-    focusTimeDisplay.textContent = focusTime;
-    updateTimerDisplay();
-    updateProgressCircle();
+  changeMode(mode) {
+    this.modeButtons.forEach((btn) => {
+      btn.classList.remove("bg-blue-700", "bg-green-700", "bg-red-700");
+    });
+
+    const selectedBtn = document.querySelector(`[data-mode="${mode}"]`);
+    selectedBtn.classList.add("bg-blue-700");
+
+    this.currentMode = mode;
+    this.timeRemaining = this.times[mode];
+    this.updateDisplay();
+
+    if (this.isRunning) {
+      clearInterval(this.intervalId);
+      this.isRunning = false;
+      this.startBtn.textContent = "Start";
+    }
+  }
+
+  updateDisplay() {
+    const minutes = Math.floor(this.timeRemaining / 60);
+    const seconds = this.timeRemaining % 60;
+    this.timer.textContent = `${minutes.toString().padStart(2, "0")}:${seconds
+      .toString()
+      .padStart(2, "0")}`;
   }
 }
 
-decreaseFocusButton.addEventListener("click", () => adjustFocusTime(-1));
-increaseFocusButton.addEventListener("click", () => adjustFocusTime(1));
-
-// Add Task to Task List
-addTaskButton.addEventListener("click", () => {
-  const taskValue = taskInput.value.trim();
-  const taskTimeValue = taskTimeInput.value.trim();
-  if (taskValue && taskTimeValue) {
-    const listItem = document.createElement("li");
-    listItem.classList.add("my-1", "text-black");
-    listItem.textContent = `${taskValue} - ${taskTimeValue} mins`;
-    taskList.appendChild(listItem);
-    taskInput.value = ""; // Clear input
-    taskTimeInput.value = ""; // Clear input
-  }
-});
-
-// Event Listeners
-startPauseButton.addEventListener("click", toggleTimer);
-resetButton.addEventListener("click", openResetPopup);
-
-// Initial Setup
-updateTimerDisplay();
-updateProgressCircle();
+new PomodoroTimer();

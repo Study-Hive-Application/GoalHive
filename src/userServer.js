@@ -1,7 +1,5 @@
 const express = require("express");
-const http = require("http");
 const path = require("path");
-const { Server } = require("socket.io");
 const dotenv = require("dotenv").config();
 const accessRouter = require("../routes/accessRouter.js");
 const connectDB = require("../config/dbConnection.js");
@@ -11,8 +9,6 @@ const accessMiddleware = require("../middleware/accessAuth.js");
 
 const port = process.env.PORT || 3000;
 const app = express();
-const server = http.createServer(app);
-const io = new Server(server);
 
 //Connecting Database
 connectDB();
@@ -30,19 +26,10 @@ app.set("views", path.join(__dirname, "../views"));
 app.use(express.static(path.resolve(__dirname, "../public")));
 
 //Routes
-app.use("/", accessMiddleware, accessRouter); //Signup and Login Routes
+app.use("/", accessRouter); //Unauthorized User Routes
 app.use("/", accessMiddleware, userRouter); //Authorized User Routes
 
 //Port  Listening
-server.listen(port, () => {
+app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
-});
-
-//Socket Connections
-io.on("connection", (socket) => {
-  console.log("User connected : ", socket.id);
-
-  socket.on("sender-text", (message) => {
-    socket.broadcast.emit("re-message", message);
-  });
 });
