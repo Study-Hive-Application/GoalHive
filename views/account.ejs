@@ -10,7 +10,7 @@
   <body class="flex items-center justify-center min-h-screen">
     <div class="container">
       <div class="forms-container">
-        <div class="signup-form">
+        <div class="signup">
           <form id="signup-form" class="w-full max-w-xs">
             <h2 class="text-2xl font-bold mb-6 text-center">Create Account</h2>
             <div class="mb-4">
@@ -40,7 +40,7 @@
                 required
               />
             </div>
-            <p id="signupError" class="p-5 text-red-500 font-bold"></p>
+            <p id="signupError" class="p-3 text-red-500 font-bold"></p>
             <button
               type="submit"
               class="w-full bg-blue-600 text-white py-2 rounded-md"
@@ -49,7 +49,7 @@
             </button>
           </form>
         </div>
-        <div class="login-form">
+        <div class="login">
           <form id="login-form" class="w-full max-w-xs">
             <h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
             <div class="mb-4">
@@ -70,7 +70,7 @@
                 required
               />
             </div>
-            <p id="loginError" class="p-5 text-red-500 font-bold"></p>
+            <p id="loginError" class="p-3 text-red-500 font-bold"></p>
             <button
               type="submit"
               class="w-full bg-blue-600 text-white py-2 rounded-md"
@@ -89,7 +89,7 @@
               one and get started!
             </p>
             <button
-              id="signIn"
+              id="signup-btn"
               class="border-white border text-white py-2 px-4 rounded-full"
             >
               << Sign Up
@@ -102,29 +102,16 @@
               info
             </p>
             <button
-              id="signUp"
+              id="signin-btn"
               class="border-white border text-white py-2 px-4 rounded-full"
             >
-              Sign In >>
+              Login >>
             </button>
           </div>
         </div>
       </div>
     </div>
 
-    <script>
-      const signUpButton = document.getElementById("signUp");
-      const signInButton = document.getElementById("signIn");
-      const container = document.querySelector(".container");
-      const leftOverlay = document.getElementById("left-overlay");
-
-      signUpButton.addEventListener("click", () => {
-        container.classList.add("right-panel-active");
-      });
-
-      signInButton.addEventListener("click", () => {
-        container.classList.remove("right-panel-active");
-      });
-    </script>
+    <script src="scripts/account.js"></script>
   </body>
 </html>

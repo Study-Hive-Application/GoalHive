@@ -31,5 +31,5 @@ app.use("/", accessMiddleware, userRouter); //Authorized User Routes
 
 //Port  Listening
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+  console.log(`Server is running on port : ${port}`);
 });

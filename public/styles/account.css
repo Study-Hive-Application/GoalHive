@@ -24,8 +24,8 @@ body {
   display: flex;
   transition: transform 0.6s ease-in-out;
 }
-.signup-form,
-.login-form {
+.signup,
+.login {
   width: 50%;
   display: flex;
   align-items: center;

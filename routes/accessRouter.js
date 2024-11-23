@@ -1,7 +1,6 @@
 const {
   accountPage,
-  signupAccount,
-  loginAccount,
+  accountTypeAuth,
   homePage,
   getFeaturesPage,
   getAboutUsPage,
@@ -14,10 +13,7 @@ const Router = express.Router();
 Router.route("/").get(homePage);
 
 //SIGNUP AND LOGIN
-// Router.route("/account")
-//   .get(accountPage)
-//   .post(signupAccount)
-//   .post(loginAccount);
+Router.route("/account").get(accountPage).post(accountTypeAuth);
 
 //Features
 Router.route("/features").get(getFeaturesPage);

@@ -1,12 +1,18 @@
+// Toggle menu function for mobile
+function toggleMenu() {
+  const menu = document.getElementById("menu");
+  menu.classList.toggle("hidden");
+}
+
 class PomodoroTimer {
   constructor() {
     this.timer = document.getElementById("timer");
     this.startBtn = document.getElementById("start-btn");
     this.resetBtn = document.getElementById("reset-btn");
-    this.modeButtons = document.querySelectorAll(".mode-btn");
+    this.modeButtons = document.querySelectorAll("[data-mode]");
 
     this.times = {
-      pomodoro: 45 * 60,
+      pomodoro: 25 * 60,
       "short-break": 5 * 60,
       "long-break": 15 * 60,
     };
@@ -17,6 +23,7 @@ class PomodoroTimer {
     this.isRunning = false;
 
     this.initEventListeners();
+    this.updateDisplay();
   }
 
   initEventListeners() {
@@ -35,9 +42,13 @@ class PomodoroTimer {
     if (this.isRunning) {
       clearInterval(this.intervalId);
       this.startBtn.textContent = "Start";
+      this.startBtn.classList.remove("bg-red-600", "hover:bg-red-700");
+      this.startBtn.classList.add("bg-green-600", "hover:bg-green-700");
     } else {
       this.intervalId = setInterval(() => this.countdown(), 1000);
       this.startBtn.textContent = "Pause";
+      this.startBtn.classList.remove("bg-green-600", "hover:bg-green-700");
+      this.startBtn.classList.add("bg-green-600", "hover:bg-green-700");
     }
     this.isRunning = !this.isRunning;
   }
@@ -47,9 +58,12 @@ class PomodoroTimer {
       this.timeRemaining--;
       this.updateDisplay();
     } else {
+      this.playNotification();
       clearInterval(this.intervalId);
       this.isRunning = false;
       this.startBtn.textContent = "Start";
+      this.startBtn.classList.remove("bg-green-300", "hover:bg-green-400");
+      this.startBtn.classList.add("bg-green-600", "hover:bg-green-700");
     }
   }
 
@@ -59,15 +73,37 @@ class PomodoroTimer {
     this.updateDisplay();
     this.isRunning = false;
     this.startBtn.textContent = "Start";
+    this.startBtn.classList.remove("bg-green-300", "hover:bg-green-400");
+    this.startBtn.classList.add("bg-green-600", "hover:bg-green-700");
   }
 
   changeMode(mode) {
     this.modeButtons.forEach((btn) => {
-      btn.classList.remove("bg-blue-700", "bg-green-700", "bg-red-700");
+      const btnMode = btn.getAttribute("data-mode");
+      btn.classList.remove(
+        "bg-blue-500",
+        "bg-green-500",
+        "bg-red-500",
+        "text-white"
+      );
+      btn.classList.add(
+        `text-${
+          btnMode === "pomodoro"
+            ? "white"
+            : btnMode === "short-break"
+            ? "white"
+            : "white"
+        }-500`
+      );
     });
 
     const selectedBtn = document.querySelector(`[data-mode="${mode}"]`);
-    selectedBtn.classList.add("bg-blue-700");
+    selectedBtn.classList.add(
+      `bg-${
+        mode === "pomodoro" ? "blue" : mode === "short-break" ? "green" : "red"
+      }-500`,
+      "text-white"
+    );
 
     this.currentMode = mode;
     this.timeRemaining = this.times[mode];
@@ -77,6 +113,8 @@ class PomodoroTimer {
       clearInterval(this.intervalId);
       this.isRunning = false;
       this.startBtn.textContent = "Start";
+      this.startBtn.classList.remove("bg-red-600", "hover:bg-red-700");
+      this.startBtn.classList.add("bg-green-600", "hover:bg-green-700");
     }
   }
 

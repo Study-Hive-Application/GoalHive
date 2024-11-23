@@ -1,11 +1,12 @@
 const jwt = require("jsonwebtoken");
 
 // Function for JWT and Cookies
-const jwtAndCookies = (res, email) => {
+const jwtAndCookies = (res, userId, email) => {
   const accessToken = jwt.sign(
     {
       user: {
-        email: email,
+        userId,
+        email,
       },
     },
     process.env.ACCESS_TOKEN_SECRET,
@@ -18,7 +19,6 @@ const jwtAndCookies = (res, email) => {
     sameSite: "strict",
     maxAge: 2 * 24 * 60 * 60 * 1000, // 2 days in milliseconds
   });
-  res.redirect("/dashboard");
 };
 
 module.exports = { jwtAndCookies };

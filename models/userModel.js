@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema(
   {
+    userId: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
       required: true,
@@ -11,33 +15,15 @@ const userSchema = mongoose.Schema(
       required: true,
       unique: true,
     },
-    phoneNumber: {
+    password: {
       type: String,
       required: true,
-      match: [/^\d{10}$/, "Please enter a valid 10-digit phone number"],
-    },
-    bio: {
-      type: String,
-      maxlength: 300,
-    },
-    subjects: {
-      type: [String],
-      validate: {
-        validator: function (subjects) {
-          return Array.isArray(subjects) && subjects.length > 0;
-        },
-        message: "Subjects should be a non-empty array of strings",
-      },
-    },
-    skills: {
-      type: [String],
     },
     phoneNumber: {
       type: String,
     },
     bio: {
       type: String,
-      maxlength: 300,
     },
     subjects: {
       type: String,
@@ -50,9 +36,5 @@ const userSchema = mongoose.Schema(
     timestamps: true,
   }
 );
-
-userSchema.methods.getFormattedSubjects = function () {
-  return this.subjects.join(", ");
-};
 
 module.exports = mongoose.model("USER", userSchema);

@@ -3,319 +3,301 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ClientPage</title>
+    <title>DashBoard</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles/dashboard.css" />
   </head>
-  <body class="bg-gray-600">
-    <div>
-      <header class="text-gray-400 bg-white body-font">
-        <div class="container mx-auto flex flex-wrap p-3 items-center">
-          <!-- Logo Section -->
-          <a
-            href="#"
-            class="flex title-font font-medium items-center text-black mb-4 md:mb-0"
-          >
-            <img
-              src="/images/Logo-removebg-preview.png"
-              alt="logo"
-              class="w-11 h-11"
-            />
-            <span class="ml-3 text-xl text-black">Study Hive</span>
-          </a>
 
-          <!-- Hamburger Icon (shown on small screens) -->
-          <button
-            class="md:hidden ml-auto flex items-center text-black focus:outline-none"
-            onclick="toggleMenu()"
-          >
-            <svg
-              class="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              ></path>
-            </svg>
-          </button>
-
-          <!-- Navigation Links (hidden on mobile) -->
-          <nav
-            id="menu"
-            class="hidden md:flex md:ml-auto flex-col md:flex-row items-center text-base justify-center w-full md:w-auto"
-          >
-            <a href="/home" class="mr-5 text-black hover:text-gray-800 pr-2"
-              >Home</a
-            >
-            <a href="#" class="mr-5 text-black hover:text-gray-800 pr-2"
-              >About us</a
-            >
-            <a href="#" class="mr-5 text-black hover:text-gray-800 pr-2"
-              >Contact us</a
-            >
-            <a href="/features" class="mr-5 text-black hover:text-gray-800 pr-2"
-              >Features</a
-            >
-          </nav>
-        </div>
-      </header>
-    </div>
-
-    <div class="bg-gray-100 min-h-screen p-8">
-      <!-- Student Profile Section -->
-      <section class="bg-white p-6 rounded-lg shadow-lg mb-8">
-        <div class="flex flex-col lg:flex-row lg:items-start pt-2">
-          <!-- Profile Picture Section -->
-          <div class="lg:mr-8 mb-4 lg:mb-0">
-            <img
-              id="profile-image-preview"
-              class="rounded-full w-24 h-24 mt-4"
-              src="<%=profileImage %>"
-              alt="Profile Preview"
-            />
-            <form action="/dasboard" method="put" enctype="multipart/form-data"">
-              <input
-                type="file"
-                name="profileImage"
-                id="profile-picture"
-                accept="image/*"
-                onchange="previewImage(event)"
-                class="mt-2"
-              />
-            </form>
-          </div>
-
-          <!-- Profile Details Section -->
-          <div>
-            <!-- Profile Header -->
-            <h2
-              class="text-2xl font-semibold mb-2 pt-8 lg:pt-0"
-              id="name-display"
-            >
-              <%=name %>
-            </h2>
-            <input
-              type="text"
-              class="hidden w-full text-2xl font-semibold mb-2 p-1 border border-gray-300 rounded"
-              id="name-input"
-              placeholder="Enter Name"
-            />
-            <hr />
-            <br />
-
-            <!-- Bio Section -->
-            <p class="text-gray-600 mb-2" id="bio-display">
-              Bio: Passionate about coding and physics!
-            </p>
-            <input
-              type="text"
-              class="hidden w-full mb-2 p-1 border border-gray-300 rounded"
-              id="bio-input"
-              placeholder="Enter Bio"
-            />
-
-            <!-- Subjects Section -->
-            <div class="mb-2">
-              <span class="text-blue-500 font-medium">Subjects:</span>
-              <span id="subjects-display">Math, Physics, Coding</span>
-              <input
-                type="text"
-                class="hidden w-full mt-1 p-1 border border-gray-300 rounded"
-                id="subjects-input"
-                placeholder="Enter Subjects"
-              />
-            </div>
-
-            <!-- Skills Section -->
-            <div>
-              <span class="text-blue-500 font-medium">Skills:</span>
-              <span id="skills-display">Problem Solving, Data Structures</span>
-              <input
-                type="text"
-                class="hidden w-full mt-1 p-1 border border-gray-300 rounded"
-                id="skills-input"
-                placeholder="Enter Skills"
-              />
-            </div>
-
-            <!-- Edit and Save Buttons -->
-            <button
-              onclick="editProfile()"
-              class="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
-              id="edit-button"
-            >
-              Edit
-            </button>
-            <button
-              onclick="saveProfile()"
-              class="hidden mt-4 bg-green-500 text-white px-4 py-2 rounded"
-              id="save-button"
-            >
-              Save
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <!-- Study Groups & Connections Section
-        <section class="bg-white p-6 rounded-lg shadow-lg mb-8">
-          <h3 class="text-xl font-semibold mb-4">Study Groups & Connections</h3>
-          <p class="text-gray-700 mb-4">Groups you’re part of:</p>
-          <ul class="list-disc ml-6 text-gray-600">
-            <li>Math Group</li>
-            <li>Physics Study Buddies</li>
-          </ul>
-          <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Connect with Peers</button>
-        </section> -->
-
-      <!-- Study Schedule Section -->
-      <section class="bg-white p-6 rounded-lg shadow-lg mb-8">
-        <h3 class="text-xl font-semibold mb-4">Study Schedule</h3>
-        <p class="text-gray-700">Your weekly study goals and sessions:</p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-          <div class="bg-gray-50 p-4 rounded shadow">
-            <h4 class="font-semibold">Monday</h4>
-            <p class="text-gray-600">Math: 2 hrs</p>
-          </div>
-          <div class="bg-gray-50 p-4 rounded shadow">
-            <h4 class="font-semibold">Tuesday</h4>
-            <p class="text-gray-600">Physics: 1 hr</p>
-          </div>
-          <!-- Add more days as needed -->
-        </div>
-      </section>
-
-      <!-- Progress Tracker Section -->
-      <section class="bg-white p-6 rounded-lg shadow-lg mb-8">
-        <h3 class="text-xl font-semibold mb-4">Progress Tracker</h3>
-        <p class="text-gray-700">Track your goals and progress:</p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-          <div class="bg-gray-50 p-4 rounded shadow">
-            <h4 class="font-semibold">Math</h4>
-            <div class="w-full bg-gray-200 rounded-full h-4 mt-2">
-              <div
-                class="bg-blue-500 h-4 rounded-full"
-                style="width: 75%"
-              ></div>
-            </div>
-            <p class="text-gray-600 mt-2">75% completed</p>
-          </div>
-          <!-- Repeat for other subjects -->
-        </div>
-      </section>
-
-      <!-- Discussion Board Section -->
-      <section class="bg-white p-6 rounded-lg shadow-lg mb-8">
-        <h3 class="text-xl font-semibold mb-4">Discussion Board</h3>
-        <textarea
-          placeholder="Ask a question..."
-          class="w-full p-4 border border-gray-300 rounded-lg mb-4"
-        ></textarea>
-        <button class="bg-blue-500 text-white px-4 py-2 rounded">
-          Post Question
-        </button>
-      </section>
-
-      <!-- Achievements Section -->
-      <section class="bg-white p-6 rounded-lg shadow-lg mb-8">
-        <h3 class="text-xl font-semibold mb-4">Achievements</h3>
-        <div class="flex space-x-4">
-          <div
-            class="bg-yellow-200 text-yellow-800 p-2 rounded-full text-center w-24"
-          >
-            <p class="font-semibold">Top Contributor</p>
-          </div>
-          <div
-            class="bg-green-200 text-green-800 p-2 rounded-full text-center w-24"
-          >
-            <p class="font-semibold">Math Expert</p>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <footer class="bg-gray-900 text-white">
+  <body>
+    <!-- navbar -->
+    <header
+      class="bg-opacity-80 text-gray-400 bg-white body-font"
+      data-aos="fade-down"
+      data-aos-duration="1000"
+    >
       <div
-        class="container mx-auto flex flex-col md:flex-row items-center justify-between py-8"
+        class="container mx-50 flex flex-wrap p-3 items-center justify-between"
       >
-        <!-- About Global Lane Section -->
-        <div class="mb-6 md:mb-0 pl-4">
-          <h3 class="text-lg font-bold mb-4">About Study Hive</h3>
-          <p class="text-sm max-w-xs">
-            A collaborative learning platform built to enhance student
-            productivity by enabling note-sharing, tracking learning progress,
-            managing personal and group tasks, facilitating real-time
-            communication through chat, and promoting focused study sessions
-            using a Pomodoro timer for effective time management and goal
-            achievement.
-          </p>
+        <!-- Logo Section -->
+        <a
+          href="/"
+          class="flex title-font font-medium items-center text-black mb-2 md:mb-0"
+        >
+          <img
+            src="images/Logo-removebg-preview.png"
+            alt="logo"
+            class="w-11 h-11"
+          />
+          <span class="ml-3 text-xl text-black">Study Hive</span>
+        </a>
+
+        <!-- Hamburger Icon (shown on small screens) -->
+        <button
+          class="md:hidden flex items-center text-black focus:outline-none ml-auto"
+          onclick="toggleMenu()"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+
+        <!-- Navigation Links -->
+        <nav
+          id="menu"
+          class="hidden md:flex md:flex-grow md:items-center justify-center md:justify-end ml-62 text-base"
+        >
+          <a href="/" class="mr-5 text-black hover:text-gray-800 pr-2">Home</a>
+          <a href="/about" class="mr-5 text-black hover:text-gray-800 pr-2"
+            >About us</a
+          >
+          <a href="/contact" class="mr-5 text-black hover:text-gray-800 pr-2"
+            >Contact us</a
+          >
+        </nav>
+      </div>
+    </header>
+    <section class="text-gray-600 body-font">
+      <div class="container px-5 py-10 mx-auto flex flex-col lg:flex-row">
+        <!-- Profile Section (Left Large Container) -->
+        <div class="flex flex-col"></div>
+        <div
+          class="flex flex-col lg:w-1/2 mr-4 mb-4 lg:mb-0 bg-gray-100 bg-opacity-90 p-6 rounded-lg"
+          data-aos="fade-right"
+          data-aos-duration="1000"
+        >
+          <div class="flex flex-col items-center">
+            <!-- Profile Picture -->
+            <img
+              class="w-32 h-32 rounded-full object-cover mb-4"
+              src="https://dummyimage.com/200x200"
+              alt="Profile"
+            />
+
+            <!-- Name -->
+            <h2 class="text-2xl font-bold mb-2"><%= user.name %></h2>
+
+            <!-- Bio -->
+            <p class="text-gray-700 text-center mb-4">
+              <%= user.bio || "No Bio Provided" %>
+            </p>
+
+            <!-- Skills -->
+            <div class="mb-4 w-full">
+              <h3 class="text-xl font-semibold mb-2">Skills %></h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="bg-blue-100 px-3 py-1 rounded-full text-sm"
+                  >Python</span
+                >
+                <span class="bg-blue-100 px-3 py-1 rounded-full text-sm"
+                  >React</span
+                >
+                <span class="bg-blue-100 px-3 py-1 rounded-full text-sm"
+                  >Machine Learning</span
+                >
+              </div>
+            </div>
+
+            <!-- Subjects -->
+            <div class="mb-4 w-full">
+              <h3 class="text-xl font-semibold mb-2">Subjects</h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="bg-green-100 px-3 py-1 rounded-full text-sm"
+                  >Data Science</span
+                >
+                <span class="bg-green-100 px-3 py-1 rounded-full text-sm"
+                  >Web Development</span
+                >
+              </div>
+            </div>
+
+            <!-- Edit Profile Button -->
+            <a href="/profile"
+              ><button
+                class="bg-indigo-500 text-white px-6 py-2 mt-5 mb-4 rounded-md hover:bg-indigo-600 transition"
+              >
+                Edit Profile
+              </button></a
+            >
+          </div>
+          <!-- Notifications Section -->
+          <div class="mt-4 bg-gray-100 bg-opacity-90 p-6 rounded-lg">
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="text-xl font-semibold">Notifications</h3>
+              <button
+                class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition"
+              >
+                Clear All
+              </button>
+            </div>
+
+            <!-- Notification Items -->
+            <div id="notificationsContainer" class="space-y-3">
+              <!-- Todo List Notifications -->
+              <div
+                class="notification bg-white p-3 rounded-lg flex justify-between items-center"
+              >
+                <div>
+                  <span class="font-medium text-sm">Todo List</span>
+                  <p class="text-xs text-gray-600">3 pending tasks</p>
+                </div>
+                <span
+                  class="bg-red-500 text-white text-xs px-2 py-1 rounded-full"
+                  >Urgent</span
+                >
+              </div>
+
+              <!-- Pomodoro Notifications -->
+              <div
+                class="notification bg-white p-3 rounded-lg flex justify-between items-center"
+              >
+                <div>
+                  <span class="font-medium text-sm">Pomodoro Timer</span>
+                  <p class="text-xs text-gray-600">
+                    Next study session in 15 mins
+                  </p>
+                </div>
+                <span
+                  class="bg-green-500 text-white text-xs px-2 py-1 rounded-full"
+                  >Upcoming</span
+                >
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="flex flex-row">
-          <!-- Quick Links Section -->
-          <div class="mb-6 md:mb-0 pr-16">
-            <h3 class="text-lg font-bold mb-4">Quick Links</h3>
-            <ul class="space-y-2">
-              <li><a href="#" class="hover:underline">Home</a></li>
-              <li><a href="#" class="hover:underline">About Us</a></li>
-              <li><a href="#" class="hover:underline">Contact Us</a></li>
-              <li><a href="#" class="hover:underline">Features</a></li>
-              <li><a href="#" class="hover:underline">Client Portal</a></li>
-            </ul>
+        <!-- Right Side Containers -->
+        <div class="lg:w-1/2 flex flex-col space-y-4">
+          <!-- Study Schedule Section with Add Day Functionality -->
+          <div
+            class="transparent-card shadow-md rounded-lg bg-gray-100 bg-opacity-90 p-6 rounded-lg"
+            data-aos="fade-left"
+            data-aos-duration="1000"
+          >
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="text-xl font-semibold">Study Schedule</h3>
+              <button
+                id="addDayBtn"
+                class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 transition"
+              >
+                Add Day
+              </button>
+            </div>
+
+            <!-- Study Schedule Days -->
+            <div class="space-y-3" id="scheduleContainer">
+              <!-- Day schedules will be dynamically inserted here -->
+            </div>
+          </div>
+          <!-- Edit Subject Modal -->
+          <div
+            id="scheduleModal"
+            class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center"
+          >
+            <div class="bg-white p-6 rounded-lg w-96">
+              <h4 id="modalTitle" class="text-xl font-semibold mb-4">
+                Edit Schedule
+              </h4>
+              <input
+                type="text"
+                id="subjectInput"
+                class="w-full border p-2 rounded mb-4"
+                placeholder="Enter subject"
+              />
+              <div class="flex justify-end space-x-2">
+                <button id="cancelModal" class="bg-gray-200 px-4 py-2 rounded">
+                  Cancel
+                </button>
+                <button
+                  id="saveSubject"
+                  class="bg-indigo-500 text-white px-4 py-2 rounded"
+                >
+                  Save
+                </button>
+              </div>
+            </div>
           </div>
 
-          <!-- Contact Us Section -->
-          <div class="mb-6 md:mb-0 pr-5">
-            <h3 class="text-lg font-bold mb-4">Contact Us</h3>
-            <ul class="space-y-2">
-              <li>
-                <a
-                  href="mailto:globallanemarketing@gmail.com"
-                  class="hover:underline"
-                  >xyhdchdcbz@gmail.com</a
+          <!-- Add Day Modal -->
+          <div
+            id="addDayModal"
+            class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center"
+          >
+            <div class="bg-white p-6 rounded-lg w-96">
+              <h4 class="text-xl font-semibold mb-4">Add New Day</h4>
+              <input
+                type="text"
+                id="newDayInput"
+                class="w-full border p-2 rounded mb-4"
+                placeholder="Enter day name"
+              />
+              <div class="flex justify-end space-x-2">
+                <button id="cancelAddDay" class="bg-gray-200 px-4 py-2 rounded">
+                  Cancel
+                </button>
+                <button
+                  id="saveNewDay"
+                  class="bg-green-500 text-white px-4 py-2 rounded"
                 >
-              </li>
-              <li>
-                <a href="tel:+91 8147052198" class="hover:underline"
-                  >+91 8147xxxxx</a
-                >
-              </li>
-              <li>
-                <a href="tel:+966 564427890" class="hover:underline"
-                  >+91 564xxxx</a
-                >
-              </li>
-            </ul>
-
-            <!-- Social Media Icons -->
-            <div class="mt-4 flex space-x-2">
-              <a href="#" class="hover:text-gray-400"
-                ><i class="fab fa-facebook-f"></i
-              ></a>
-              <a href="#" class="hover:text-gray-400"
-                ><i class="fab fa-twitter"></i
-              ></a>
-              <a href="#" class="hover:text-gray-400"
-                ><i class="fab fa-instagram"></i
-              ></a>
-              <a href="#" class="hover:text-gray-400"
-                ><i class="fab fa-linkedin-in"></i
-              ></a>
+                  Add Day
+                </button>
+              </div>
             </div>
+          </div>
+
+          <!-- Features Cards Section -->
+          <div class="grid grid-cols-2 gap-4">
+            <!-- Pomodoro Card -->
+            <a href="/pomodoro">
+              <div
+                class="bg-opacity-90 bg-gray-100 p-4 rounded-lg text-center hover:bg-gray-300"
+                data-aos="zoom-in"
+              >
+                <h4 class="font-semibold mb-2">Pomodoro</h4>
+                <p class="text-sm text-gray-600">Focus Timer</p>
+              </div>
+            </a>
+
+            <!-- Todo Card -->
+            <a href="/to-do-list">
+              <div
+                class="bg-opacity-90 bg-gray-100 p-4 rounded-lg text-center hover:bg-gray-300"
+                data-aos="zoom-in"
+                data-aos-duration="1000"
+              >
+                <h4 class="font-semibold mb-2">Todo List</h4>
+                <p class="text-sm text-gray-600">Task Management</p>
+              </div>
+            </a>
+
+            <!-- Progress Tracker Card -->
+            <a href="/features">
+              <div
+                class="bg-opacity-90 bg-gray-100 p-4 rounded-lg text-center hover:bg-gray-300"
+                data-aos="zoom-in"
+                data-aos-duration="2000"
+              >
+                <h4 class="font-semibold mb-2">Progress</h4>
+                <p class="text-sm text-gray-600">Track Learning</p>
+              </div>
+            </a>
           </div>
         </div>
       </div>
-      <hr />
-      <!-- Footer Bottom Text -->
-      <p class="text-sm text-center mt-4 pb-4">
-        &copy; 2024 Study Hive. All rights reserved.
-      </p>
-    </footer>
-    <script src="clientPage.js"></script>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="scripts/dashboard.js"></script>
   </body>
 </html>
