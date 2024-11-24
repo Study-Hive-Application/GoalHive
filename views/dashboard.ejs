@@ -80,45 +80,33 @@
           <div class="flex flex-col items-center">
             <!-- Profile Picture -->
             <img
+              id="profileImage"
               class="w-32 h-32 rounded-full object-cover mb-4"
-              src="https://dummyimage.com/200x200"
+              src=""
               alt="Profile"
             />
 
             <!-- Name -->
-            <h2 class="text-2xl font-bold mb-2"><%= user.name %></h2>
+            <h2 id="name" class="text-2xl font-bold mb-2"></h2>
 
             <!-- Bio -->
-            <p class="text-gray-700 text-center mb-4">
-              <%= user.bio || "No Bio Provided" %>
-            </p>
+            <p id="bio" class="text-gray-700 text-center mb-4"></p>
 
             <!-- Skills -->
             <div class="mb-4 w-full">
-              <h3 class="text-xl font-semibold mb-2">Skills %></h3>
-              <div class="flex flex-wrap gap-2">
-                <span class="bg-blue-100 px-3 py-1 rounded-full text-sm"
-                  >Python</span
-                >
-                <span class="bg-blue-100 px-3 py-1 rounded-full text-sm"
-                  >React</span
-                >
-                <span class="bg-blue-100 px-3 py-1 rounded-full text-sm"
-                  >Machine Learning</span
-                >
+              <h3 class="text-xl font-semibold mb-2">Skills</h3>
+              <div id="skills-section" class="flex flex-wrap gap-2">
+                <span class="bg-blue-100 px-3 py-1 rounded-full text-sm"></span>
               </div>
             </div>
 
             <!-- Subjects -->
             <div class="mb-4 w-full">
               <h3 class="text-xl font-semibold mb-2">Subjects</h3>
-              <div class="flex flex-wrap gap-2">
-                <span class="bg-green-100 px-3 py-1 rounded-full text-sm"
-                  >Data Science</span
-                >
-                <span class="bg-green-100 px-3 py-1 rounded-full text-sm"
-                  >Web Development</span
-                >
+              <div id="subjects-section" class="flex flex-wrap gap-2">
+                <span
+                  class="bg-green-100 px-3 py-1 rounded-full text-sm"
+                ></span>
               </div>
             </div>
 

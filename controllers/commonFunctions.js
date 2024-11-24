@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-
 // Function for JWT and Cookies
 const jwtAndCookies = (res, userId, email) => {
   const accessToken = jwt.sign(

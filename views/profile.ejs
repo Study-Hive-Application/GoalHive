@@ -13,11 +13,6 @@
       rel="stylesheet"
     />
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        AOS.init();
-      });
-    </script>
     <link rel="stylesheet" href="styles/profile.css" />
   </head>
 
@@ -32,8 +27,8 @@
         <div class="lg:mr-8 mb-4 lg:mb-0 text-center lg:text-left">
           <img
             id="profile-image-preview"
-            class="rounded-full w-36 h-36 mx-auto lg:mx-0 mt-4"
-            src="https://via.placeholder.com/150"
+            class="rounded-full w-40 h-40 mx-auto lg:mx-10 mt-20"
+            src=""
             alt="Profile Preview"
           />
           <input
@@ -83,12 +78,36 @@
           <!-- Skills -->
           <div class="mb-4">
             <span class="text-blue-600 font-medium">Skills:</span>
-            <input
-              type="text"
-              class="w-full text-lg mb-2 p-3 border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              id="skills-input"
-              placeholder="Enter Skills"
-            />
+            <div class="mt-2 p-3 border-2 border-gray-300 rounded-md">
+              <div id="skills-form">
+                <!-- Bubbles here -->
+                <div
+                  id="skills-bubbles"
+                  class="flex flex-wrap gap-2 mb-4"
+                ></div>
+                <button
+                  class="bg-blue-500 text-white px-2 py-1 mt-2 rounded-lg hover:bg-blue-600"
+                  onclick="displaySkillsInput()"
+                >
+                  Add Skill
+                </button>
+                <div id="custom-skills-section" class="hidden mt-4">
+                  <input
+                    type="text"
+                    id="custom-skill"
+                    placeholder="Enter skill"
+                    class="w-full mb-2 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                  <button
+                    type="button"
+                    onclick="addCustomSkill()"
+                    class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+                  >
+                    Add
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- Subjects -->
@@ -96,48 +115,22 @@
             <span class="text-blue-600 font-medium">Subjects:</span>
             <div class="mt-2 p-3 border-2 border-gray-300 rounded-md">
               <div id="subjects-form">
-                <label class="block"
-                  ><input type="checkbox" value="Math" class="mr-2" />
-                  Math</label
+                <!-- Bubbles here -->
+                <div
+                  id="subject-bubbles"
+                  class="flex flex-wrap gap-2 mb-4"
+                ></div>
+                <button
+                  class="bg-blue-500 text-white px-2 py-1 mt-2 rounded-lg hover:bg-blue-600"
+                  onclick="displaySubjectInput()"
                 >
-                <label class="block"
-                  ><input type="checkbox" value="Physics" class="mr-2" />
-                  Physics</label
-                >
-                <label class="block"
-                  ><input type="checkbox" value="Coding" class="mr-2" />
-                  Coding</label
-                >
-                <label class="block"
-                  ><input type="checkbox" value="Chemistry" class="mr-2" />
-                  Chemistry</label
-                >
-                <label class="block"
-                  ><input type="checkbox" value="Biology" class="mr-2" />
-                  Biology</label
-                >
-                <label class="block"
-                  ><input
-                    type="checkbox"
-                    value="Computer Science"
-                    class="mr-2"
-                  />
-                  Computer Science</label
-                >
-                <label class="block">
-                  <input
-                    type="checkbox"
-                    value="Other"
-                    class="mr-2"
-                    onclick="displayInput()"
-                  />
-                  Other
-                </label>
+                  Add Subject
+                </button>
                 <div id="custom-subject-section" class="hidden mt-4">
                   <input
                     type="text"
                     id="custom-subject"
-                    placeholder="Enter custom subject"
+                    placeholder="Enter subject"
                     class="w-full mb-2 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                   <button
@@ -145,7 +138,7 @@
                     onclick="addCustomSubject()"
                     class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
                   >
-                    Add Subject
+                    Add
                   </button>
                 </div>
               </div>
@@ -161,7 +154,8 @@
             >
               Save
             </button>
-            <a href="/profile" class="ml-4">
+
+            <a href="/dashboard" class="ml-4">
               <button
                 type="button"
                 class="bg-red-500 text-white px-6 py-2 rounded-md hover:bg-red-700 transition ease-in-out duration-200"

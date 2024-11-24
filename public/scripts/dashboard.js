@@ -1,65 +1,63 @@
 // Animations
 AOS.init();
-
-//Profile
-document.addEventListener("DOMContentLoaded", function () {
-  // Retrieve profile data from sessionStorage
-  const profileDataString = sessionStorage.getItem("profileData");
-
-  if (profileDataString) {
-    const profileData = JSON.parse(profileDataString);
-
-    // Update Profile Picture
-    const profileImage = document.querySelector("img.w-32.h-32.rounded-full");
-    if (profileImage && profileData.profileImage) {
-      profileImage.src = profileData.profileImage;
-    }
-
-    // Update Name
-    const nameElement = document.querySelector("h2.text-2xl.font-bold");
-    if (nameElement && profileData.name) {
-      nameElement.textContent = profileData.name;
-    }
-
-    // Update Bio
-    const bioElement = document.querySelector("p.text-gray-600");
-    if (bioElement && profileData.bio) {
-      bioElement.textContent = profileData.bio;
-    }
-
-    // Update Skills
-    if (profileData.skills) {
-      const skillsArray = profileData.skills
-        .split(",")
-        .filter((skill) => skill.trim());
-      const skillsContainer = document.querySelector(".flex.flex-wrap.gap-2");
-      if (skillsContainer) {
-        skillsContainer.innerHTML = skillsArray
-          .map(
-            (skill) =>
-              `<span class="bg-blue-100 px-3 py-1 rounded-full text-sm">${skill.trim()}</span>`
-          )
-          .join("");
-      }
-    }
-
-    // Update Subjects
-    if (profileData.subjects) {
-      const subjectsArray = profileData.subjects.split(",");
-      const subjectsContainer = document.querySelectorAll(
-        ".flex.flex-wrap.gap-2"
-      )[1];
-      if (subjectsContainer) {
-        subjectsContainer.innerHTML = subjectsArray
-          .map(
-            (subject) =>
-              `<span class="bg-green-100 px-3 py-1 rounded-full text-sm">${subject.trim()}</span>`
-          )
-          .join("");
-      }
-    }
-  }
+document.addEventListener("DOMContentLoaded", () => {
+  loadProfile();
 });
+
+async function loadProfile() {
+  try {
+    const response = await fetch("/dashboard?type=load");
+    if (!response.ok) {
+      return console.log("Failed to fetch profile data");
+    }
+    console.log("res : ", response);
+
+    const data = await response.json();
+    console.log("data : ", data);
+
+    // Profile Image
+    const profileImage = document.getElementById("profileImage");
+    profileImage.src = data.profileImage;
+    profileImage.alt = data.name;
+
+    // Name
+    document.getElementById("name").innerText = data.name;
+
+    // Bio
+    document.getElementById("bio").innerText = data.bio || "No Bio Provided";
+
+    // Skills
+    const skillsContainer = document.getElementById("skills-section");
+    skillsContainer.innerHTML = ""; // Clear existing skills
+    if (data.skills) {
+      data.skills.split(",").forEach((skill) => {
+        const skillBubble = document.createElement("span");
+        skillBubble.className = "bg-blue-100 px-3 py-1 rounded-full text-sm";
+        skillBubble.innerText = skill.trim();
+        skillsContainer.appendChild(skillBubble);
+      });
+    } else {
+      skillsContainer.innerHTML = "No Skills Provided";
+    }
+
+    // Subjects
+    const subjectsContainer = document.getElementById("subjects-section");
+    subjectsContainer.innerHTML = ""; // Clear existing subjects
+    if (data.subjects) {
+      data.subjects.split(",").forEach((subject) => {
+        const subjectBubble = document.createElement("span");
+        subjectBubble.className = "bg-green-100 px-3 py-1 rounded-full text-sm";
+        subjectBubble.innerText = subject.trim();
+        subjectsContainer.appendChild(subjectBubble);
+      });
+    } else {
+      subjectsContainer.innerHTML = "No Subjects Provided";
+    }
+  } catch (error) {
+    console.error("Error loading profile:", error);
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const scheduleModal = document.getElementById("scheduleModal");
   const subjectInput = document.getElementById("subjectInput");
