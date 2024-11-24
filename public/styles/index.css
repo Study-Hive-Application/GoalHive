@@ -1,0 +1,70 @@
+body {
+  font-family: "Space Grotesk", sans-serif;
+}
+.gradient-bg {
+  background: linear-gradient(120deg, #4f46e5, #7c3aed);
+}
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.feature-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.feature-card:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+.animated-bg-gradient {
+  background: linear-gradient(270deg, #4f46e5, #7c3aed, #ec4899);
+  background-size: 200% 200%;
+  animation: gradient 6s ease infinite;
+}
+.animated-font-gradient {
+  font-size: 1.1rem;
+  font-weight: 900;
+  background: linear-gradient(270deg, #266208, #86c111, #046f34);
+  background-size: 200% 200%;
+  animation: gradient 6s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.hover-glow:hover {
+  box-shadow: 0 0 25px rgba(124, 58, 237, 0.5);
+}
+.nav-link {
+  position: relative;
+  overflow: hidden;
+  animation: gradient 6s ease infinite;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #4f46e5, #7c3aed);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+.nav-link:hover::after {
+  transform: translateX(0);
+}
+.glassmorphism {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}

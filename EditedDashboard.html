@@ -1,453 +1,520 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DashBoard</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
     <style>
-        body {
-            background-image: url(dash1.png);
-            background-size: cover;
-            background-position: center;
-        }
-        .glassmorphism {
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-        }
-        .animated-gradient {
-            background: linear-gradient(270deg, #4f46e5, #7c3aed, #db2777);
-            background-size: 200% 200%;
-            animation: gradient 3s ease infinite;
-        }
+      body {
+        background-image: url(dash1.png);
+        background-size: cover;
+        background-position: center;
+      }
+
+      .glassmorphism {
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      }
+
+      .animated-gradient {
+        background: linear-gradient(270deg, #4f46e5, #7c3aed, #db2777);
+        background-size: 200% 200%;
+        animation: gradient 3s ease infinite;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-     <!-- Navigation Bar -->
-     <header class="fixed w-full z-50 glass-card glassmorphism">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <a href="index.html" class="flex items-center space-x-3">
-                    <img src="Logo-removebg-preview.png" alt="logo" class="w-12 h-12 rounded-xl">
-                    <span class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
-                        Study Hive
-                    </span>
-                </a>
+  <body>
+    <!-- Navigation Bar -->
+    <header class="fixed w-full z-50 glass-card glassmorphism">
+      <div class="container mx-auto px-6 py-2">
+        <div class="flex items-center justify-between">
+          <a href="index.html" class="flex items-center space-x-3">
+            <img
+              src="Logo-removebg-preview.png"
+              alt="logo"
+              class="w-12 h-12 rounded-xl"
+            />
+            <span
+              class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600"
+            >
+              Study Hive
+            </span>
+          </a>
 
-                <nav class="hidden md:flex items-center space-x-8">
-                    <a href="Editedindex.html" class="nav-link text-black hover:text-indigo-600 transition-colors">Home</a>
-                    <a href="aboutUs.html" class="nav-link text-black hover:text-indigo-600 transition-colors">About</a>
-                    <a href="contactUs.html" class="nav-link text-black hover:text-indigo-600 transition-colors">Contact</a>
-                </nav>
+          <nav class="hidden md:flex items-center space-x-8">
+            <a
+              href="Editedindex.html"
+              class="nav-link text-black hover:text-indigo-600 transition-colors"
+              >Home</a
+            >
+            <a
+              href="aboutUs.html"
+              class="nav-link text-black hover:text-indigo-600 transition-colors"
+              >About</a
+            >
+            <a
+              href="contactUs.html"
+              class="nav-link text-black hover:text-indigo-600 transition-colors"
+              >Contact</a
+            >
+          </nav>
 
-                <button id="menuBtn" class="md:hidden text-gray-600 focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                    </svg>
-                </button>
-            </div>
-
-            <nav id="mobileMenu" class="hidden md:hidden mt-4 pb-4">
-                <div class="flex flex-col space-y-4">
-                    <a href="EditedDashboard.html" class="text-black hover:text-indigo-600">Home</a>
-                    <a href="aboutUs.html" class="text-black hover:text-indigo-600">About</a>
-                    <a href="contactUs.html" class="text-black hover:text-indigo-600">Contact</a>
-                    <a href="features.html" class="text-black hover:text-indigo-600">Features</a>
-                    <a href="EditedDashboard.html" class="px-6 py-2 animated-gradient text-black rounded-full text-center">
-                        DashBoard
-                    </a>
-                </div>
-            </nav>
-        </div>
-    </header>
-    <section class="text-gray-600 body-font pt-16">
-        <div class="container px-5 py-10 mx-auto flex flex-col lg:flex-row">
-            <!-- Profile Section (Left Large Container) -->
-            <div class="flex flex-col">
-
-            </div>
-            <div class="flex flex-col lg:w-1/2 mr-4 mb-4 lg:mb-0 bg-gray-100 bg-opacity-90 p-6 rounded-lg"
-                data-aos="fade-right" data-aos-duration="1000">
-                <div class="flex flex-col items-center">
-                    <!-- Profile Picture -->
-                    <img class="w-32 h-32 rounded-full object-cover mb-4" src="https://dummyimage.com/200x200"
-                        alt="Profile">
-
-                    <!-- Name -->
-                    <h2 class="text-2xl font-bold mb-2">John Doe</h2>
-
-                    <!-- Bio -->
-                    <p class="text-gray-700 text-center mb-4">
-                        Passionate learner and technology enthusiast
-                    </p>
-
-                    <!-- Skills -->
-                    <div class="mb-4 w-full">
-                        <h3 class="text-xl font-semibold mb-2">Skills</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-100 px-3 py-1 rounded-full text-sm">Python</span>
-                            <span class="bg-blue-100 px-3 py-1 rounded-full text-sm">React</span>
-                            <span class="bg-blue-100 px-3 py-1 rounded-full text-sm">Machine Learning</span>
-                        </div>
-                    </div>
-
-                    <!-- Subjects -->
-                    <div class="mb-4 w-full">
-                        <h3 class="text-xl font-semibold mb-2">Subjects</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-green-100 px-3 py-1 rounded-full text-sm">Data Science</span>
-                            <span class="bg-green-100 px-3 py-1 rounded-full text-sm">Web Development</span>
-                        </div>
-                    </div>
-
-                    <!-- Edit Profile Button -->
-                    <a href="profile.html"><button
-                            class="bg-indigo-500 text-white px-6 py-2 mt-5 mb-4 rounded-md hover:bg-indigo-600 transition">
-                            Edit Profile
-                        </button></a>
-                </div>
-                <!-- Notifications Section -->
-                <div class="mt-4 bg-gray-100 bg-opacity-90 p-6 rounded-lg">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-xl font-semibold">Notifications</h3>
-                        <button class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition">
-                            Clear All
-                        </button>
-                    </div>
-
-                    <!-- Notification Items -->
-                    <div id="notificationsContainer" class="space-y-3">
-                        <!-- Todo List Notifications -->
-                        <div class="notification bg-white p-3 rounded-lg flex justify-between items-center">
-                            <div>
-                                <span class="font-medium text-sm">Todo List</span>
-                                <p class="text-xs text-gray-600">3 pending tasks</p>
-                            </div>
-                            <span class="bg-red-500 text-white text-xs px-2 py-1 rounded-full">Urgent</span>
-                        </div>
-
-                        <!-- Pomodoro Notifications -->
-                        <div class="notification bg-white p-3 rounded-lg flex justify-between items-center">
-                            <div>
-                                <span class="font-medium text-sm">Pomodoro Timer</span>
-                                <p class="text-xs text-gray-600">Next study session in 15 mins</p>
-                            </div>
-                            <span class="bg-green-500 text-white text-xs px-2 py-1 rounded-full">Upcoming</span>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-
-            <section class="text-gray-600 body-font">
-                <div class="container px-5 mx-auto flex flex-col lg:flex-row">
-                    <!-- Profile Section (Left Large Container) remains the same -->
-
-                    <!-- Right Side Containers -->
-                    <div class="w-[620px] flex-col space-y-4">
-                        <!-- Study Schedule Section - Removed Add Day button -->
-                        <div class="transparent-card shadow-md rounded-lg bg-gray-100 bg-opacity-90 p-6 rounded-lg"
-                            data-aos="fade-left" data-aos-duration="1000">
-                            <div class="flex justify-between items-center mb-4">
-                                <h3 class="text-xl font-semibold">Study Schedule</h3>
-                            </div>
-
-                            <!-- Study Schedule Days -->
-                            <div class="space-y-3" id="scheduleContainer">
-                                <!-- Day schedules will be dynamically inserted here -->
-                            </div>
-                        </div>
-
-                        <!-- Edit Subject Modal remains the same -->
-                        <div id="scheduleModal"
-                            class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
-                            <div class="bg-white p-6 rounded-lg w-96">
-                                <h4 id="modalTitle" class="text-xl font-semibold mb-4">Edit Schedule</h4>
-                                <input type="text" id="subjectInput" class="w-full border p-2 rounded mb-4"
-                                    placeholder="Enter subject">
-                                <div class="flex justify-end space-x-2">
-                                    <button id="cancelModal" class="bg-gray-200 px-4 py-2 rounded">
-                                        Cancel
-                                    </button>
-                                    <button id="saveSubject" class="bg-indigo-500 text-white px-4 py-2 rounded">
-                                        Save
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Schedule Container with fixed days -->
-
-
-                        <!-- Features Cards Section remains the same -->
-                        <div class="grid grid-cols-2 gap-4">
-                            <a href="EditedPomodoro.html">
-                                <div class="bg-opacity-90 bg-gray-100 p-4 rounded-lg text-center hover:bg-gray-300"
-                                    data-aos="zoom-in">
-                                    <h4 class="font-semibold mb-2">Pomodoro</h4>
-                                    <p class="text-sm text-gray-600">Focus Timer</p>
-                                </div>
-                            </a>
-
-                            <!-- Todo Card -->
-                            <a href="EditedTodo.html">
-                                <div class="bg-opacity-90 bg-gray-100 p-4 rounded-lg text-center hover:bg-gray-300"
-                                    data-aos="zoom-in" data-aos-duration="1000">
-                                    <h4 class="font-semibold mb-2">Todo List</h4>
-                                    <p class="text-sm text-gray-600">Task Management</p>
-                                </div>
-                            </a>
-
-                            <a href="StudyShedule.html">
-                                <div class="bg-opacity-90 bg-gray-100 p-4 rounded-lg text-center hover:bg-gray-300"
-                                    data-aos="zoom-in" data-aos-duration="1000">
-                                    <h4 class="font-semibold mb-2">Study Shedule</h4>
-                                    <p class="text-sm text-gray-600">Schedule Management</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <script>
-                function saveProfile() {
-                    // Get values from all inputs
-                    const name = document.getElementById("name-input").value;
-                    const phone = document.getElementById("phone-input").value;
-                    const bio = document.getElementById("bio-input").value;
-                    const skills = document.getElementById("skills-input").value;
-                    const profileImage = document.getElementById("profile-image-preview").src;
-
-                    // Get selected subjects
-                    const selectedSubjects = Array.from(document.querySelectorAll("#subjects-form input[type='checkbox']:checked"))
-                        .filter(checkbox => checkbox.value !== "Other")
-                        .map(checkbox => checkbox.value);
-
-                    // Create profile data object
-                    const profileData = {
-                        name: name || "John Doe",
-                        phone: phone || "",
-                        bio: bio || "No bio added yet",
-                        skills: skills || "No skills added yet",
-                        subjects: selectedSubjects,
-                        profileImage: profileImage
-                    };
-
-                    // Save to sessionStorage
-                    sessionStorage.setItem('profileData', JSON.stringify(profileData));
-
-                    // Redirect to dashboard
-                    window.location.href = 'EditedDashboard.html';
-                }
-
-                document.addEventListener('DOMContentLoaded', function () {
-                    // Load profile data from sessionStorage
-                    const storedData = sessionStorage.getItem('profileData');
-                    const storedSchedule = sessionStorage.getItem('scheduleData');
-
-                    // Profile update logic
-                    if (storedData) {
-                        const profileData = JSON.parse(storedData);
-                        updateProfileUI(profileData);
-                    }
-
-                    // Schedule management
-                    const scheduleModal = document.getElementById('scheduleModal');
-                    const subjectInput = document.getElementById('subjectInput');
-                    const saveSubjectBtn = document.getElementById('saveSubject');
-                    const cancelModalBtn = document.getElementById('cancelModal');
-                    const modalTitle = document.getElementById('modalTitle');
-                    const scheduleContainer = document.getElementById('scheduleContainer');
-
-                    let currentDay = null;
-                    let currentSubjectIndex = null;
-
-                    // Initialize or load schedule data
-                    let scheduleData = storedSchedule ? JSON.parse(storedSchedule) : {
-                        monday: [],
-                        tuesday: [],
-                        wednesday: [],
-                        thursday: [],
-                        friday: [],
-                        saturday: [],
-                        sunday: []
-                    };
-
-                    function updateProfileUI(profileData) {
-                        // Update profile image
-                        const profileImg = document.querySelector('.w-32.h-32.rounded-full.object-cover');
-                        if (profileImg && profileData.profileImage) {
-                            profileImg.src = profileData.profileImage;
-                        }
-
-                        // Update name
-                        const nameElement = document.querySelector('h2.text-2xl.font-bold');
-                        if (nameElement && profileData.name) {
-                            nameElement.textContent = profileData.name;
-                        }
-
-                        // Update bio
-                        const bioElement = document.querySelector('p.text-gray-700.text-center');
-                        if (bioElement && profileData.bio) {
-                            bioElement.textContent = profileData.bio;
-                        }
-
-                        // Update skills
-                        const skillsContainer = document.querySelector('.mb-4.w-full:has(h3:contains("Skills")) .flex.flex-wrap.gap-2');
-                        if (skillsContainer && profileData.skills) {
-                            const skillsArray = profileData.skills.split(',').map(skill => skill.trim());
-                            skillsContainer.innerHTML = skillsArray
-                                .map(skill => `<span class="bg-blue-100 px-3 py-1 rounded-full text-sm">${skill}</span>`)
-                                .join('');
-                        }
-
-                        // Update subjects
-                        const subjectsContainer = document.querySelector('.mb-4.w-full:has(h3:contains("Subjects")) .flex.flex-wrap.gap-2');
-                        if (subjectsContainer && profileData.subjects) {
-                            subjectsContainer.innerHTML = profileData.subjects
-                                .map(subject => `<span class="bg-green-100 px-3 py-1 rounded-full text-sm">${subject}</span>`)
-                                .join('');
-                        }
-                    }
-
-                    function loadSchedule() {
-                        scheduleContainer.innerHTML = '';
-                        Object.entries(scheduleData).forEach(([day, subjects]) => {
-                            createDayScheduleElement(day, subjects);
-                        });
-                    }
-
-                    function createDayScheduleElement(day, subjects) {
-                        const dayDiv = document.createElement('div');
-                        dayDiv.className = 'day-schedule flex justify-between items-center bg-white p-3 rounded-lg';
-                        dayDiv.setAttribute('data-day', day);
-
-                        const dayInfo = document.createElement('div');
-                        dayInfo.className = 'flex-grow';
-                        dayInfo.innerHTML = `
-            <span class="font-medium">${capitalizeFirstLetter(day)}</span>
-            <div class="text-sm text-gray-600">
-                ${subjects.length > 0 ?
-                                subjects.map((subject, index) => `
-                        <div class="flex items-center justify-between">
-                            <span>${subject}</span>
-                            <button class="delete-subject text-red-500 hover:text-red-700 ml-2" data-index="${index}">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </button>
-                        </div>
-                    `).join('')
-                                : 'No subjects scheduled'}
-            </div>
-        `;
-
-                        const editBtn = document.createElement('button');
-                        editBtn.className = 'edit-day text-gray-500 hover:text-gray-700 ml-4';
-                        editBtn.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+          <button
+            id="menuBtn"
+            class="md:hidden text-gray-600 focus:outline-none"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             </svg>
-        `;
+          </button>
+        </div>
 
-                        dayDiv.appendChild(dayInfo);
-                        dayDiv.appendChild(editBtn);
+        <nav id="mobileMenu" class="hidden md:hidden mt-4 pb-4">
+          <div class="flex flex-col space-y-4">
+            <a
+              href="EditedDashboard.html"
+              class="text-black hover:text-indigo-600"
+              >Home</a
+            >
+            <a href="aboutUs.html" class="text-black hover:text-indigo-600"
+              >About</a
+            >
+            <a href="contactUs.html" class="text-black hover:text-indigo-600"
+              >Contact</a
+            >
+            <a href="features.html" class="text-black hover:text-indigo-600"
+              >Features</a
+            >
+            <a
+              href="EditedDashboard.html"
+              class="px-6 py-2 animated-gradient text-black rounded-full text-center"
+            >
+              DashBoard
+            </a>
+          </div>
+        </nav>
+      </div>
+    </header>
 
-                        // Add event listeners
-                        editBtn.addEventListener('click', () => openEditModal(day));
-                        dayDiv.querySelectorAll('.delete-subject').forEach(btn => {
-                            btn.addEventListener('click', (e) => {
-                                e.stopPropagation();
-                                const index = parseInt(btn.dataset.index);
-                                deleteSubject(day, index);
-                            });
-                        });
+    <div class="container px-5 pt-28 py-8 mx-auto">
+      <!-- Main content wrapper with flex layout -->
+      <div class="flex flex-col lg:flex-row gap-8">
+        <!-- Left Side - Profile Section -->
+        <div class="lg:w-1/3">
+          <div class="bg-gray-100 bg-opacity-90 p-6 rounded-lg">
+            <div class="flex flex-col items-center">
+              <!-- Profile Picture -->
+              <img
+                class="w-32 h-32 rounded-full object-cover mb-4"
+                src="https://dummyimage.com/200x200"
+                alt="Profile"
+              />
 
-                        scheduleContainer.appendChild(dayDiv);
-                    }
+              <!-- Name -->
+              <h2 class="text-2xl font-bold mb-2">John Doe</h2>
 
-                    function capitalizeFirstLetter(string) {
-                        return string.charAt(0).toUpperCase() + string.slice(1);
-                    }
+              <!-- Bio -->
+              <p class="text-gray-700 text-center mb-4">
+                Passionate learner and technology enthusiast
+              </p>
 
-                    function openEditModal(day) {
-                        currentDay = day;
-                        currentSubjectIndex = null;
-                        modalTitle.textContent = `Add Subject to ${capitalizeFirstLetter(day)}`;
-                        subjectInput.value = '';
-                        scheduleModal.classList.remove('hidden');
-                    }
+              <!-- Skills -->
+              <div class="mb-4 w-full">
+                <h3 class="text-xl font-semibold mb-2">Skills</h3>
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-blue-100 px-3 py-1 rounded-full text-sm"
+                    >Python</span
+                  >
+                  <span class="bg-blue-100 px-3 py-1 rounded-full text-sm"
+                    >React</span
+                  >
+                  <span class="bg-blue-100 px-3 py-1 rounded-full text-sm"
+                    >Machine Learning</span
+                  >
+                </div>
+              </div>
 
-                    function deleteSubject(day, index) {
-                        scheduleData[day].splice(index, 1);
-                        saveScheduleData();
-                        loadSchedule();
-                    }
+              <!-- Subjects -->
+              <div class="mb-4 w-full">
+                <h3 class="text-xl font-semibold mb-2">Subjects</h3>
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-green-100 px-3 py-1 rounded-full text-sm"
+                    >Data Science</span
+                  >
+                  <span class="bg-green-100 px-3 py-1 rounded-full text-sm"
+                    >Web Development</span
+                  >
+                </div>
+              </div>
 
-                    function saveScheduleData() {
-                        sessionStorage.setItem('scheduleData', JSON.stringify(scheduleData));
-                    }
+              <!-- Edit Profile Button -->
+              <a href="profile.html"
+                ><button
+                  class="bg-indigo-500 text-white px-6 py-2 mt-5 mb-5 rounded-md hover:bg-indigo-600 transition"
+                >
+                  Edit Profile
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
 
-                    // Event listeners
-                    saveSubjectBtn.addEventListener('click', () => {
-                        const subject = subjectInput.value.trim();
-                        if (subject) {
-                            if (!scheduleData[currentDay].includes(subject)) {
-                                if (currentSubjectIndex !== null) {
-                                    scheduleData[currentDay][currentSubjectIndex] = subject;
-                                } else {
-                                    scheduleData[currentDay].push(subject);
-                                }
-                                saveScheduleData();
-                                loadSchedule();
-                                scheduleModal.classList.add('hidden');
-                            } else {
-                                alert('Subject already exists for this day.');
-                            }
-                        }
-                    });
+        <!-- Right Side Content -->
+        <div class="lg:w-2/3 space-y-6">
+          <!-- Notifications Section -->
+          <div class="bg-gray-100 bg-opacity-90 p-6 rounded-lg">
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="text-xl font-semibold">Notifications</h3>
+              <button
+                class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition"
+              >
+                Clear All
+              </button>
+            </div>
 
-                    cancelModalBtn.addEventListener('click', () => {
-                        scheduleModal.classList.add('hidden');
-                    });
+            <div class="space-y-3">
+              <!-- Todo List Notification -->
+              <div
+                class="bg-white p-3 rounded-lg flex justify-between items-center"
+              >
+                <div>
+                  <span class="font-medium text-sm">Todo List</span>
+                  <p class="text-xs text-gray-600">3 pending tasks</p>
+                </div>
+                <span
+                  class="bg-red-500 text-white text-xs px-2 py-1 rounded-full"
+                  >Urgent</span
+                >
+              </div>
 
-                    // Initialize
-                    loadSchedule();
-                });
+              <!-- Pomodoro Notification -->
+              <div
+                class="bg-white p-3 rounded-lg flex justify-between items-center"
+              >
+                <div>
+                  <span class="font-medium text-sm">Pomodoro Timer</span>
+                  <p class="text-xs text-gray-600">
+                    Next study session in 15 mins
+                  </p>
+                </div>
+                <span
+                  class="bg-green-500 text-white text-xs px-2 py-1 rounded-full"
+                  >Upcoming</span
+                >
+              </div>
+            </div>
+          </div>
 
-                if (typeof AOS !== 'undefined') {
-                    AOS.init();
-                }
+          <!-- Study Schedule Section -->
+          <div class="bg-gray-100 bg-opacity-90 p-3 rounded-lg">
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="text-xl font-semibold">Study Schedule</h3>
+            </div>
+            <div class="space-y-3" id="scheduleContainer">
+              <!-- Schedule content will go here -->
+            </div>
+          </div>
 
-                menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            // Animate hamburger icon
-            const paths = menuBtn.querySelector('svg').querySelectorAll('path');
-            paths.forEach(path => {
-                path.classList.toggle('translate-y-1');
+          <!-- Feature Cards Grid -->
+          <div class="grid grid-cols-2 gap-4">
+            <!-- Pomodoro Card -->
+            <a href="EditedPomodoro.html" class="block">
+              <div
+                class="bg-gray-100 bg-opacity-90 pt-2 pb-2 rounded-lg text-center hover:bg-gray-200 transition"
+              >
+                <h4 class="font-semibold mb-2">Pomodoro</h4>
+                <p class="text-sm text-gray-600">Focus Timer</p>
+              </div>
+            </a>
+
+            <!-- Todo Card -->
+            <a href="EditedTodo.html" class="block">
+              <div
+                class="bg-gray-100 bg-opacity-90 pt-2 pb-2 rounded-lg text-center hover:bg-gray-200 transition"
+              >
+                <h4 class="font-semibold mb-2">Todo List</h4>
+                <p class="text-sm text-gray-600">Task Management</p>
+              </div>
+            </a>
+
+            <!-- Study Schedule Card -->
+            <a href="StudySchedule.html" class="block">
+              <div
+                class="bg-gray-100 bg-opacity-90 pt-2 pb-2 rounded-lg text-center hover:bg-gray-200 transition"
+              >
+                <h4 class="font-semibold mb-2">Study Schedule</h4>
+                <p class="text-sm text-gray-600">Schedule Management</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function saveProfile() {
+        // Get values from all inputs
+        const name = document.getElementById("name-input").value;
+        const phone = document.getElementById("phone-input").value;
+        const bio = document.getElementById("bio-input").value;
+        const skills = document.getElementById("skills-input").value;
+        const profileImage = document.getElementById(
+          "profile-image-preview"
+        ).src;
+
+        // Get selected subjects
+        const selectedSubjects = Array.from(
+          document.querySelectorAll(
+            "#subjects-form input[type='checkbox']:checked"
+          )
+        )
+          .filter((checkbox) => checkbox.value !== "Other")
+          .map((checkbox) => checkbox.value);
+
+        // Update UI directly
+        updateProfileUI({
+          name: name || "John Doe",
+          phone: phone || "",
+          bio: bio || "No bio added yet",
+          skills: skills || "No skills added yet",
+          subjects: selectedSubjects,
+          profileImage: profileImage,
+        });
+
+        // Redirect to dashboard
+        window.location.href = "EditedDashboard.html";
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize schedule data structure
+        let scheduleData = {
+          monday: [],
+          tuesday: [],
+          wednesday: [],
+          thursday: [],
+          friday: [],
+          saturday: [],
+          sunday: [],
+        };
+
+        // Get DOM elements
+        const scheduleModal = document.getElementById("scheduleModal");
+        const subjectInput = document.getElementById("subjectInput");
+        const saveSubjectBtn = document.getElementById("saveSubject");
+        const cancelModalBtn = document.getElementById("cancelModal");
+        const modalTitle = document.getElementById("modalTitle");
+        const scheduleContainer = document.getElementById("scheduleContainer");
+
+        let currentDay = null;
+        let currentSubjectIndex = null;
+
+        function updateProfileUI(profileData) {
+          // Update profile image
+          const profileImg = document.querySelector(
+            ".w-32.h-32.rounded-full.object-cover"
+          );
+          if (profileImg && profileData.profileImage) {
+            profileImg.src = profileData.profileImage;
+          }
+
+          // Update name
+          const nameElement = document.querySelector("h2.text-2xl.font-bold");
+          if (nameElement && profileData.name) {
+            nameElement.textContent = profileData.name;
+          }
+
+          // Update bio
+          const bioElement = document.querySelector(
+            "p.text-gray-700.text-center"
+          );
+          if (bioElement && profileData.bio) {
+            bioElement.textContent = profileData.bio;
+          }
+
+          // Update skills
+          const skillsContainer = document.querySelector(
+            '.mb-4.w-full:has(h3:contains("Skills")) .flex.flex-wrap.gap-2'
+          );
+          if (skillsContainer && profileData.skills) {
+            const skillsArray = profileData.skills
+              .split(",")
+              .map((skill) => skill.trim());
+            skillsContainer.innerHTML = skillsArray
+              .map(
+                (skill) =>
+                  `<span class="bg-blue-100 px-3 py-1 rounded-full text-sm">${skill}</span>`
+              )
+              .join("");
+          }
+
+          // Update subjects
+          const subjectsContainer = document.querySelector(
+            '.mb-4.w-full:has(h3:contains("Subjects")) .flex.flex-wrap.gap-2'
+          );
+          if (subjectsContainer && profileData.subjects) {
+            subjectsContainer.innerHTML = profileData.subjects
+              .map(
+                (subject) =>
+                  `<span class="bg-green-100 px-3 py-1 rounded-full text-sm">${subject}</span>`
+              )
+              .join("");
+          }
+        }
+
+        function loadSchedule() {
+          scheduleContainer.innerHTML = "";
+          Object.entries(scheduleData).forEach(([day, subjects]) => {
+            createDayScheduleElement(day, subjects);
+          });
+        }
+
+        function createDayScheduleElement(day, subjects) {
+          const dayDiv = document.createElement("div");
+          dayDiv.className =
+            "day-schedule flex justify-between items-center bg-white p-3 rounded-lg";
+          dayDiv.setAttribute("data-day", day);
+
+          const dayInfo = document.createElement("div");
+          dayInfo.className = "flex-grow";
+          dayInfo.innerHTML = `
+              <span class="font-medium">${capitalizeFirstLetter(day)}</span>
+              <div class="text-sm text-gray-600">
+                  ${
+                    subjects.length > 0
+                      ? subjects
+                          .map(
+                            (subject, index) => `
+                          <div class="flex items-center justify-between">
+                              <span>${subject}</span>
+                              <button class="delete-subject text-red-500 hover:text-red-700 ml-2" data-index="${index}">
+                                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                      <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                  </svg>
+                              </button>
+                          </div>
+                      `
+                          )
+                          .join("")
+                      : "No subjects scheduled"
+                  }
+              </div>
+          `;
+
+          const editBtn = document.createElement("button");
+          editBtn.className = "edit-day text-gray-500 hover:text-gray-700 ml-4";
+          editBtn.innerHTML = `
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+              </svg>
+          `;
+
+          dayDiv.appendChild(dayInfo);
+          dayDiv.appendChild(editBtn);
+
+          // Add event listeners
+          editBtn.addEventListener("click", () => openEditModal(day));
+          dayDiv.querySelectorAll(".delete-subject").forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+              e.stopPropagation();
+              const index = parseInt(btn.dataset.index);
+              deleteSubject(day, index);
             });
-        });
+          });
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.classList.add('shadow-md');
+          scheduleContainer.appendChild(dayDiv);
+        }
+
+        function capitalizeFirstLetter(string) {
+          return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+
+        function openEditModal(day) {
+          currentDay = day;
+          currentSubjectIndex = null;
+          modalTitle.textContent = `Add Subject to ${capitalizeFirstLetter(
+            day
+          )}`;
+          subjectInput.value = "";
+          scheduleModal.classList.remove("hidden");
+        }
+
+        function deleteSubject(day, index) {
+          scheduleData[day].splice(index, 1);
+          loadSchedule();
+        }
+
+        // Event listeners
+        saveSubjectBtn.addEventListener("click", () => {
+          const subject = subjectInput.value.trim();
+          if (subject) {
+            if (!scheduleData[currentDay].includes(subject)) {
+              if (currentSubjectIndex !== null) {
+                scheduleData[currentDay][currentSubjectIndex] = subject;
+              } else {
+                scheduleData[currentDay].push(subject);
+              }
+              loadSchedule();
+              scheduleModal.classList.add("hidden");
             } else {
-                header.classList.remove('shadow-md');
+              alert("Subject already exists for this day.");
             }
+          }
         });
-            </script>
-            <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-            <script>
-                AOS.init();
-            </script>
-</body>
 
+        cancelModalBtn.addEventListener("click", () => {
+          scheduleModal.classList.add("hidden");
+        });
+
+        // Initialize schedule
+        loadSchedule();
+      });
+
+      // Initialize AOS if it exists
+      if (typeof AOS !== "undefined") {
+        AOS.init();
+      }
+
+      // Mobile menu functionality
+      const menuBtn = document.querySelector("#menuBtn");
+      const mobileMenu = document.querySelector("#mobileMenu");
+
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        // Animate hamburger icon
+        const paths = menuBtn.querySelector("svg").querySelectorAll("path");
+        paths.forEach((path) => {
+          path.classList.toggle("translate-y-1");
+        });
+      });
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", () => {
+        const header = document.querySelector("header");
+        if (window.scrollY > 50) {
+          header.classList.add("shadow-md");
+        } else {
+          header.classList.remove("shadow-md");
+        }
+      });
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
 </html>

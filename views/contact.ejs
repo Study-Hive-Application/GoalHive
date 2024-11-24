@@ -3,18 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Virtual Study Website</title>
+    <title>Contact Us</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   </head>
+
   <body>
-    <!-- Navbar Section -->
-    <div>
-      <!-- Header Section -->
-      <%- include('partials/header') %>
-    </div>
+    <!-- Header -->
+    <%- include("partials/header") %>
     <main>
-      <section class="text-gray-600 body-font relative bg-blue-50 m-0 p-0">
+      <section class="text-gray-600 body-font relative bg-blue-50 m-0 pt-16">
         <div class="container px-5 py-12 mx-auto flex sm:flex-nowrap flex-wrap">
           <div
             class="lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative"
@@ -39,7 +37,6 @@
               referrerpolicy="no-referrer-when-downgrade "
               style="filter: grayscale(1) contrast(1.2) opacity(0.4)"
             ></iframe>
-
             <div
               class="bg-white relative flex flex-wrap py-6 rounded shadow-md"
             >
@@ -49,10 +46,7 @@
                 >
                   ADDRESS
                 </h2>
-                <p class="mt-1">
-                  Photo booth tattooed prism, portland taiyaki hoodie neutra
-                  typewriter
-                </p>
+                <p class="mt-1">NMAM Institute of Technology Nitte - 574110</p>
               </div>
               <div class="lg:w-1/2 px-6 mt-4 lg:mt-0">
                 <h2
@@ -60,13 +54,15 @@
                 >
                   EMAIL
                 </h2>
-                <a class="text-indigo-500 leading-relaxed">example@email.com</a>
+                <a class="text-indigo-500 leading-relaxed"
+                  >studyhive@email.com</a
+                >
                 <h2
                   class="title-font font-semibold text-gray-900 tracking-widest text-xs mt-4"
                 >
                   PHONE
                 </h2>
-                <p class="leading-relaxed">123-456-7890</p>
+                <p class="leading-relaxed">8618027470</p>
               </div>
             </div>
           </div>
@@ -117,20 +113,16 @@
             <button
               class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
             >
-              Button
+              Submit
             </button>
           </div>
         </div>
       </section>
     </main>
 
-    <!-- Footer Section -->
-    <%- include('partials/footer') %>
-
-    <!--Scripts-->
+    <!-- Footer -->
+    <%- include("partials/footer") %>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-      AOS.init();
-    </script>
+    <script src="scripts/contact.js"></script>
   </body>
 </html>

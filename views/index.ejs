@@ -3,227 +3,164 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Virtual Study Website</title>
+    <title>Study Hive - Modern Learning Platform</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css "
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
     />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles/index.css" />
   </head>
-  <body>
-    <div>
-      <!-- Header-->
-      <%- include('partials/header') %>
-    </div>
 
-    <div
-      class="relative h-screen md:h-screen"
-      data-aos="fade-up"
-      data-aos-duration="1000"
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <%- include("partials/header") %>
+
+    <!-- Hero Section -->
+    <section
+      class="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      <div class="absolute inset-0 bg-black opacity-50"></div>
-      <img
-        src="https://c4.wallpaperflare.com/wallpaper/252/4/1004/light-bulb-lights-books-wallpaper-preview.jpg"
-        alt=""
-        class="w-full h-full object-cover"
-      />
+      <div class="absolute inset-0 gradient-bg"></div>
+      <div class="absolute inset-0">
+        <div class="absolute inset-0 bg-black/50"></div>
+        <img
+          src="images/indexUi.jpg"
+          alt="Hero background"
+          class="w-full h-full object-cover"
+        />
+      </div>
 
-      <!-- Centered Text, moved 10px upwards -->
-      <div
-        class="absolute inset-0 flex items-start justify-center text-white text-center"
-        style="top: 318px"
-      >
-        <div>
-          <!-- Main Heading with 3D Effect -->
-          <h1 class="text-6xl font-bold text-gray-200 text-3d">Study Hive</h1>
-
-          <!-- Sub-heading with 3D Effect -->
-          <p class="mt-2 text-2xl text-gray-400 font-bold text-3d-secondary">
-            Collaborative, productive, organized, focused, interactive.
-          </p>
-
-          <!-- Features Button -->
-          <a href="/features"
-            ><button
-              class="bg-gray-900 border border-white mt-5 p-4 pr-16 pl-16 rounded-full text-xl transition-transform duration-200 ease-in-out transform hover:bg-gray-700 hover:scale-105 hover:text-xl"
-            >
-              Features
-            </button></a
+      <div class="relative z-20 text-center px-6 max-w-6xl mx-auto">
+        <h1
+          class="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight"
+        >
+          Transform Your Learning Journey with
+          <span
+            class="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500"
           >
+            Study Hive
+          </span>
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto">
+          Experience the future of collaborative learning with intelligent
+          tools, real-time tracking, and focused study sessions.
+        </p>
+        <div
+          class="flex flex-col sm:flex-row items-center justify-center gap-6"
+        >
+          <a
+            href="/features"
+            class="group px-8 py-4 bg-white text-indigo-600 rounded-full text-lg font-medium hover:bg-indigo-50 transition-all hover-glow flex items-center gap-2"
+          >
+            Explore Features
+            <i
+              class="fas fa-arrow-right transition-transform group-hover:translate-x-2"
+            ></i>
+          </a>
+          <a
+            href="/account"
+            class="px-8 py-4 glass-card text-white rounded-full text-lg font-medium hover:bg-white/20 transition-all hover-glow"
+          >
+            Get Started
+          </a>
         </div>
       </div>
-    </div>
 
-    <div>
-      <center>
-        <p
-          class="text-5xl font-bold font-sans text-gray-800 pt-8 underline decoration-gray-900 underline-offset-4"
-          data-aos="fade-right"
-          data-aos-duration="1000"
+      <div class="absolute bottom-0 left-0 w-full overflow-hidden">
+        <svg
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+          class="relative w-full h-24"
         >
-          About Study Hive
-        </p>
-        <p class="text-lg pt-8" data-aos="fade-up" data-aos-duration="1000">
-          "Our platform enhances student productivity by offering collaborative
-          tools like note-sharing, progress tracking, a to-do list, and
-          real-time chat. With a Pomodoro timer for focused study sessions,
-          students can efficiently manage tasks, share resources, and achieve
-          their learning goals together."
-        </p>
-        <a href="/aboutus"
-          ><button
-            class="bg-blue-900 mt-8 p-3 pr-5 pl-5 text-white rounded-full transition-transform duration-200 ease-in-out transform hover:bg-blue-700 hover:scale-105 hover:shadow-lg"
-            data-aos="fade-up"
-            data-aos-duration="2000"
-          >
-            Learn more
-          </button></a
-        >
-      </center>
-    </div>
+          <path
+            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+            fill="#ffffff"
+          />
+        </svg>
+      </div>
+    </section>
 
-    <div class="bg-gray-100 mt-8">
-      <section>
-        <div
-          class="max-w-[1260px] mx-auto"
-          data-aos="fade-right"
-          data-aos-duration="1000"
+    <!-- Features Section -->
+    <section class="py-24 bg-white">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-4xl md:text-5xl font-bold text-center mb-20 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600"
         >
-          <h1
-            class="text-center py-3 text-4xl font-bold text-gray-800 underline decoration-gray-900 underline-offset-4"
-          >
-            Our Key Offerings:
-          </h1>
-        </div>
-        <div
-          class="max-w-[1200px] mx-auto py-[50px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
-          data-aos="fade-right"
-          data-aos-duration="1000"
-        >
-          <!-- Pomodoro Card -->
+          Powerful Features for Smart Learning
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <div
-            class="shadow-xl p-4 text-center hover:bg-gray-300 duration-700 flex flex-col items-center"
+            class="feature-card bg-gradient-to-br from-indigo-50 to-purple-50 p-8 rounded-3xl shadow-xl"
           >
-            <img
-              src="images/images/2306-removebg-preview.png"
-              alt="Resource Icon"
-              class="animate-bounce pt-4 mx-auto"
-              style="width: 35px; height: 45px"
-            />
-            <h3 class="text-xl font-bold pt-2 py-2 text-gray-800">
-              Pomodoro Timer
-            </h3>
-            <p>Enhances focus with work and break intervals</p>
-            <div class="flex space-x-4 mt-5">
-              <button
-                class="bg-blue-900 text-white px-4 py-2 rounded hover:bg-blue-700 hover:scale-110 duration-500"
-                onclick="openModal('Pomodoro Timer', 'The Pomodoro Timer is a productivity tool that encourages focused work sessions, typically 25 minutes long, followed by 5-minute breaks. This technique helps improve concentration and prevent burnout. Our timer allows users to customize intervals, track progress, and enhance efficiency, making it easier to achieve their goals.Enhances focus with work and break intervals')"
-              >
-                Learn More
-              </button>
-            </div>
-          </div>
-
-          <!-- Study Schedule Card -->
-          <div
-            class="shadow-xl p-4 text-center hover:bg-gray-300 duration-700 flex flex-col items-center"
-          >
-            <i
-              class="fa-solid fa-magnifying-glass-chart animate-bounce pt-4"
-              style="font-size: 35px"
-            ></i>
-            <h3 class="text-xl font-bold pt-2 py-2 text-gray-800">
-              Study Schedule
-            </h3>
-            <p>Plan your study goals and make steady progress every day</p>
-            <div class="flex space-x-4 mt-5">
-              <button
-                class="bg-blue-900 text-white px-4 py-2 rounded hover:bg-blue-700 hover:scale-110 duration-500"
-                onclick="openModal('Study Schedule', 'Organize your study routine daily and track your progress. Stay motivated and on target with each day, and build consistent study habits that bring you closer to achieving your academic ambitions.')"
-              >
-                Learn More
-              </button>
-            </div>
-          </div>
-
-          <!-- To-Do List Card -->
-          <div
-            class="shadow-xl p-4 text-center hover:bg-gray-300 duration-700 flex flex-col items-center"
-          >
-            <img
-              src="images/todo.png.png"
-              alt="Resource Icon"
-              class="animate-bounce pt-4 mx-auto"
-              style="width: 35px; height: 45px"
-            />
-            <h3 class="text-xl font-bold pt-2 py-2 text-gray-800">ToDo List</h3>
-            <p>Organize tasks efficiently and boost your productivity.</p>
-            <div class="flex space-x-4 mt-5">
-              <button
-                class="bg-blue-900 text-white px-4 py-2 rounded hover:bg-blue-700 hover:scale-110 duration-500"
-                onclick="openModal('ToDo List', 'The To-Do List is an essential productivity tool that helps users organize tasks efficiently. By allowing individuals to create, manage, and prioritize tasks, it promotes effective time management. Users can check off completed items, providing a sense of accomplishment and clarity, ultimately enhancing focus and productivity throughout the day.')"
-              >
-                Learn More
-              </button>
-            </div>
-          </div>
-
-          <!-- Chat Features Card -->
-          <div
-            class="shadow-xl p-4 text-center hover:bg-gray-300 duration-700 flex flex-col items-center"
-          >
-            <i
-              class="fa-brands fa-discourse animate-bounce pt-4"
-              style="font-size: 35px"
-            ></i>
-            <h3 class="text-xl font-bold pt-2 py-2 text-gray-800">
-              Chat Features
-            </h3>
-            <p>Connect, collaborate, and communicate in real time.</p>
-            <div class="flex space-x-4 mt-5">
-              <button
-                class="bg-blue-900 text-white px-4 py-2 rounded hover:bg-blue-700 hover:scale-110 duration-500"
-                onclick="openModal('Chat Features', 'The chat feature enhances communication and collaboration by allowing users to connect in real time. It enables instant messaging, file sharing, and group discussions, fostering a dynamic environment for teamwork. By facilitating quick exchanges of ideas and feedback, this feature boosts productivity and strengthens relationships among users.')"
-              >
-                Learn More
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Modal Structure -->
-        <div
-          id="modal"
-          class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden"
-          data-aos="zoom-in"
-          data-aos-duration="2000"
-        >
-          <div class="bg-white p-6 rounded-lg max-w-md mx-auto text-center">
-            <h2
-              id="modalTitle"
-              class="text-2xl font-bold mb-4 text-gray-800"
-            ></h2>
-            <p id="modalContent" class="text-gray-600 mb-6"></p>
-            <button
-              onclick="closeModal()"
-              class="bg-blue-900 text-white px-4 py-2 rounded hover:bg-blue-700"
+            <div
+              class="w-16 h-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center mb-6 transform rotate-3"
             >
-              Close
-            </button>
+              <i class="fas fa-list-check text-2xl text-white"></i>
+            </div>
+            <h3 class="text-2xl font-semibold mb-4 text-gray-800">
+              Smart ToDo List
+            </h3>
+            <p class="text-gray-600">
+              Organize tasks intelligently with AI-powered prioritization and
+              smart reminders.
+            </p>
+          </div>
+
+          <div
+            class="feature-card bg-gradient-to-br from-indigo-50 to-purple-50 p-8 rounded-3xl shadow-xl"
+          >
+            <div
+              class="w-16 h-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center mb-6 transform -rotate-3"
+            >
+              <i class="fas fa-chart-line text-2xl text-white"></i>
+            </div>
+            <h3 class="text-2xl font-semibold mb-4 text-gray-800">
+              Study Shedule
+            </h3>
+            <p class="text-gray-600">
+              A structured plan to allocate time for effective learning
+              activities.
+            </p>
+          </div>
+
+          <div
+            class="feature-card bg-gradient-to-br from-indigo-50 to-purple-50 p-8 rounded-3xl shadow-xl"
+          >
+            <div
+              class="w-16 h-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center mb-6 transform rotate-3"
+            >
+              <i class="fas fa-clock text-2xl text-white"></i>
+            </div>
+            <h3 class="text-2xl font-semibold mb-4 text-gray-800">
+              Focus Timer
+            </h3>
+            <p class="text-gray-600">
+              Boost productivity with our advanced Pomodoro timer and focus
+              tracking system.
+            </p>
           </div>
         </div>
-      </section>
-    </div>
+
+        <div class="text-center mt-16">
+          <a
+            href="/about"
+            class="inline-block px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full hover:opacity-90 transition-all hover-glow"
+          >
+            More About us
+          </a>
+        </div>
+      </div>
+    </section>
 
     <!-- Footer -->
     <%- include("partials/footer") %>
-
-    <!--Scripts-->
-    <script src="scripts/script.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-      AOS.init();
-    </script>
+    <script src="scripts/index.js"></script>
   </body>
 </html>

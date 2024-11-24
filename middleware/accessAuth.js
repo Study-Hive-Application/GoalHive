@@ -1,26 +1,22 @@
 const jwt = require("jsonwebtoken");
 
 const accessMiddleware = (req, res, next) => {
-  //Check token
   const token = req.cookies.Token;
-  //Setting false as Default
-  req.isAuthenticated = false;
 
-  if (token) {
-    try {
-      // Verifying token
-      const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-      req.user = decoded.user; // Attach user info from token to request object
-      req.isAuthenticated = true;
-    } catch (err) {
-      res.render("login", {
-        errorMessage: null,
-        isAuthenticated: req.isAuthenticated,
-      });
-    }
+  req.isAuthenticated = false; // Default False
+
+  try {
+    // Verifying token
+    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+    req.user = decoded.user;
+    req.isAuthenticated = true;
+    next();
+  } catch (err) {
+    return res.render("account", {
+      isAuthenticated: req.isAuthenticated,
+      message: "Session expired or invalid token. Please log in again.",
+    });
   }
-
-  next();
 };
 
 module.exports = accessMiddleware;

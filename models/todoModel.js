@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const TodoSchema = new mongoose.Schema(
   {
-    email: {
+    userId: {
       type: String,
       required: true,
     },
@@ -11,12 +11,13 @@ const TodoSchema = new mongoose.Schema(
       required: true,
     },
 
-    reminderTime: {
+    dueDate: {
       type: Date,
       required: true,
     },
     isCompleted: {
       type: Boolean,
+      require: true,
       default: false,
     },
   },

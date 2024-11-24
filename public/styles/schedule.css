@@ -1,0 +1,21 @@
+.glassmorphism {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+.animated-gradient {
+  background: linear-gradient(270deg, #4f46e5, #7c3aed, #ec4899);
+  background-size: 200% 200%;
+  animation: gradient 6s ease infinite;
+}
+.delete-subject {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.delete-subject svg {
+  width: 16px;
+  height: 16px;
+}

@@ -10,247 +10,162 @@
   </head>
 
   <body>
-    <!-- navbar -->
+    <!-- Navigation Bar -->
     <header
-      class="bg-opacity-80 text-gray-400 bg-white body-font"
+      class="fixed w-full z-50 glass-card bg-white"
       data-aos="fade-down"
       data-aos-duration="1000"
     >
-      <div
-        class="container mx-50 flex flex-wrap p-3 items-center justify-between"
-      >
-        <!-- Logo Section -->
-        <a
-          href="/"
-          class="flex title-font font-medium items-center text-black mb-2 md:mb-0"
-        >
-          <img
-            src="images/Logo-removebg-preview.png"
-            alt="logo"
-            class="w-11 h-11"
-          />
-          <span class="ml-3 text-xl text-black">Study Hive</span>
-        </a>
+      <div class="container mx-auto px-6 py-3">
+        <div class="flex items-center justify-between">
+          <a href="/" class="flex items-center space-x-3">
+            <img
+              src="images/Logo-removebg-preview.png"
+              alt="logo"
+              class="w-12 h-12 rounded-xl"
+            />
+            <span
+              class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600"
+            >
+              Study Hive
+            </span>
+          </a>
 
-        <!-- Hamburger Icon (shown on small screens) -->
-        <button
-          class="md:hidden flex items-center text-black focus:outline-none ml-auto"
-          onclick="toggleMenu()"
-        >
-          <svg
-            class="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            ></path>
-          </svg>
-        </button>
+          <nav class="hidden md:flex items-center space-x-8">
+            <a
+              href="/"
+              class="nav-link text-black hover:text-indigo-600 animated-font-gradient transition-colors"
+              >Home</a
+            >
+            <a
+              href="/features"
+              class="nav-link text-black animated-font-gradient hover:text-indigo-600 transition-colors"
+              >Features</a
+            >
+            <a
+              href="/about"
+              class="nav-link text-black animated-font-gradient hover:text-indigo-600 transition-colors"
+              >About</a
+            >
+            <a
+              href="/contact"
+              class="nav-link text-black animated-font-gradient hover:text-indigo-600 transition-colors"
+              >Contact</a
+            >
+          </nav>
 
-        <!-- Navigation Links -->
-        <nav
-          id="menu"
-          class="hidden md:flex md:flex-grow md:items-center justify-center md:justify-end ml-62 text-base"
-        >
-          <a href="/" class="mr-5 text-black hover:text-gray-800 pr-2">Home</a>
-          <a href="/about" class="mr-5 text-black hover:text-gray-800 pr-2"
-            >About us</a
+          <button
+            id="menuBtn"
+            class="md:hidden text-gray-600 focus:outline-none"
           >
-          <a href="/contact" class="mr-5 text-black hover:text-gray-800 pr-2"
-            >Contact us</a
-          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <nav id="mobileMenu" class="hidden md:hidden mt-4 pb-4">
+          <div class="flex flex-col space-y-4">
+            <a
+              href="/"
+              class="text-black animated-font-gradient hover:text-indigo-600"
+              >Home</a
+            >
+            <a
+              href="/about"
+              class="text-black animated-font-gradient hover:text-indigo-600"
+              >About</a
+            >
+            <a
+              href="/contact"
+              class="text-black animated-font-gradient hover:text-indigo-600"
+              >Contact</a
+            >
+            <a
+              href="/features"
+              class="text-black animated-font-gradient hover:text-indigo-600"
+              >Features</a
+            >
+          </div>
         </nav>
       </div>
     </header>
-    <section class="text-gray-600 body-font">
-      <div class="container px-5 py-10 mx-auto flex flex-col lg:flex-row">
-        <!-- Profile Section (Left Large Container) -->
-        <div class="flex flex-col"></div>
-        <div
-          class="flex flex-col lg:w-1/2 mr-4 mb-4 lg:mb-0 bg-gray-100 bg-opacity-90 p-6 rounded-lg"
-          data-aos="fade-right"
-          data-aos-duration="1000"
-        >
-          <div class="flex flex-col items-center">
-            <!-- Profile Picture -->
-            <img
-              id="profileImage"
-              class="w-32 h-32 rounded-full object-cover mb-4"
-              src=""
-              alt="Profile"
-            />
 
-            <!-- Name -->
-            <h2 id="name" class="text-2xl font-bold mb-2"></h2>
+    <div class="container px-5 pt-28 py-8 mx-auto">
+      <!-- Main content wrapper with flex layout -->
+      <div class="flex flex-col lg:flex-row gap-8">
+        <!-- Left Side - Profile Section -->
+        <div class="lg:w-1/3">
+          <div class="bg-gray-100 bg-opacity-90 p-6 rounded-lg">
+            <div class="flex flex-col items-center">
+              <!-- Profile Picture -->
+              <img
+                class="w-32 h-32 rounded-full object-cover mb-4"
+                id="profileImage"
+                src=""
+                alt="Profile"
+              />
 
-            <!-- Bio -->
-            <p id="bio" class="text-gray-700 text-center mb-4"></p>
+              <!-- Name -->
+              <h2 class="text-2xl font-bold mb-2" id="name"></h2>
 
-            <!-- Skills -->
-            <div class="mb-4 w-full">
-              <h3 class="text-xl font-semibold mb-2">Skills</h3>
-              <div id="skills-section" class="flex flex-wrap gap-2">
-                <span class="bg-blue-100 px-3 py-1 rounded-full text-sm"></span>
+              <!-- Bio -->
+              <p class="text-gray-700 text-center mb-4" id="bio"></p>
+
+              <!-- Skills -->
+              <div class="mb-4 w-full">
+                <h3 class="text-xl font-semibold mb-2">Skills</h3>
+                <div class="flex flex-wrap gap-2" id="skills-section"></div>
               </div>
-            </div>
 
-            <!-- Subjects -->
-            <div class="mb-4 w-full">
-              <h3 class="text-xl font-semibold mb-2">Subjects</h3>
-              <div id="subjects-section" class="flex flex-wrap gap-2">
-                <span
-                  class="bg-green-100 px-3 py-1 rounded-full text-sm"
-                ></span>
+              <!-- Subjects -->
+              <div class="mb-4 w-full">
+                <h3 class="text-xl font-semibold mb-2">Subjects</h3>
+                <div class="flex flex-wrap gap-2" id="subjects-section"></div>
               </div>
-            </div>
 
-            <!-- Edit Profile Button -->
-            <a href="/profile"
-              ><button
-                class="bg-indigo-500 text-white px-6 py-2 mt-5 mb-4 rounded-md hover:bg-indigo-600 transition"
-              >
-                Edit Profile
-              </button></a
-            >
-          </div>
-          <!-- Notifications Section -->
-          <div class="mt-4 bg-gray-100 bg-opacity-90 p-6 rounded-lg">
-            <div class="flex justify-between items-center mb-4">
-              <h3 class="text-xl font-semibold">Notifications</h3>
-              <button
-                class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition"
-              >
-                Clear All
-              </button>
-            </div>
-
-            <!-- Notification Items -->
-            <div id="notificationsContainer" class="space-y-3">
-              <!-- Todo List Notifications -->
-              <div
-                class="notification bg-white p-3 rounded-lg flex justify-between items-center"
-              >
-                <div>
-                  <span class="font-medium text-sm">Todo List</span>
-                  <p class="text-xs text-gray-600">3 pending tasks</p>
-                </div>
-                <span
-                  class="bg-red-500 text-white text-xs px-2 py-1 rounded-full"
-                  >Urgent</span
+              <!-- Edit Profile Button -->
+              <a href="/profile"
+                ><button
+                  class="bg-indigo-500 text-white px-6 py-2 mt-5 mb-5 rounded-md hover:bg-indigo-600 transition"
                 >
-              </div>
-
-              <!-- Pomodoro Notifications -->
-              <div
-                class="notification bg-white p-3 rounded-lg flex justify-between items-center"
-              >
-                <div>
-                  <span class="font-medium text-sm">Pomodoro Timer</span>
-                  <p class="text-xs text-gray-600">
-                    Next study session in 15 mins
-                  </p>
-                </div>
-                <span
-                  class="bg-green-500 text-white text-xs px-2 py-1 rounded-full"
-                  >Upcoming</span
-                >
-              </div>
+                  Edit Profile
+                </button>
+              </a>
             </div>
           </div>
         </div>
 
-        <!-- Right Side Containers -->
-        <div class="lg:w-1/2 flex flex-col space-y-4">
-          <!-- Study Schedule Section with Add Day Functionality -->
-          <div
-            class="transparent-card shadow-md rounded-lg bg-gray-100 bg-opacity-90 p-6 rounded-lg"
-            data-aos="fade-left"
-            data-aos-duration="1000"
-          >
+        <!-- Right Side Content -->
+        <div class="lg:w-2/3 space-y-6">
+          <!-- Notifications Section -->
+
+          <!-- Study Schedule Section -->
+          <div class="bg-gray-100 bg-opacity-90 p-3 rounded-lg">
             <div class="flex justify-between items-center mb-4">
               <h3 class="text-xl font-semibold">Study Schedule</h3>
-              <button
-                id="addDayBtn"
-                class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 transition"
-              >
-                Add Day
-              </button>
             </div>
-
-            <!-- Study Schedule Days -->
             <div class="space-y-3" id="scheduleContainer">
-              <!-- Day schedules will be dynamically inserted here -->
-            </div>
-          </div>
-          <!-- Edit Subject Modal -->
-          <div
-            id="scheduleModal"
-            class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center"
-          >
-            <div class="bg-white p-6 rounded-lg w-96">
-              <h4 id="modalTitle" class="text-xl font-semibold mb-4">
-                Edit Schedule
-              </h4>
-              <input
-                type="text"
-                id="subjectInput"
-                class="w-full border p-2 rounded mb-4"
-                placeholder="Enter subject"
-              />
-              <div class="flex justify-end space-x-2">
-                <button id="cancelModal" class="bg-gray-200 px-4 py-2 rounded">
-                  Cancel
-                </button>
-                <button
-                  id="saveSubject"
-                  class="bg-indigo-500 text-white px-4 py-2 rounded"
-                >
-                  Save
-                </button>
-              </div>
+              <!-- Schedule content will go here -->
             </div>
           </div>
 
-          <!-- Add Day Modal -->
-          <div
-            id="addDayModal"
-            class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center"
-          >
-            <div class="bg-white p-6 rounded-lg w-96">
-              <h4 class="text-xl font-semibold mb-4">Add New Day</h4>
-              <input
-                type="text"
-                id="newDayInput"
-                class="w-full border p-2 rounded mb-4"
-                placeholder="Enter day name"
-              />
-              <div class="flex justify-end space-x-2">
-                <button id="cancelAddDay" class="bg-gray-200 px-4 py-2 rounded">
-                  Cancel
-                </button>
-                <button
-                  id="saveNewDay"
-                  class="bg-green-500 text-white px-4 py-2 rounded"
-                >
-                  Add Day
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Features Cards Section -->
+          <!-- Feature Cards Grid -->
           <div class="grid grid-cols-2 gap-4">
             <!-- Pomodoro Card -->
-            <a href="/pomodoro">
+            <a href="/pomodoro" class="block">
               <div
-                class="bg-opacity-90 bg-gray-100 p-4 rounded-lg text-center hover:bg-gray-300"
-                data-aos="zoom-in"
+                class="bg-gray-100 bg-opacity-90 pt-2 pb-2 rounded-lg text-center hover:bg-gray-200 transition"
               >
                 <h4 class="font-semibold mb-2">Pomodoro</h4>
                 <p class="text-sm text-gray-600">Focus Timer</p>
@@ -258,33 +173,28 @@
             </a>
 
             <!-- Todo Card -->
-            <a href="/to-do-list">
+            <a href="/todo" class="block">
               <div
-                class="bg-opacity-90 bg-gray-100 p-4 rounded-lg text-center hover:bg-gray-300"
-                data-aos="zoom-in"
-                data-aos-duration="1000"
+                class="bg-gray-100 bg-opacity-90 pt-2 pb-2 rounded-lg text-center hover:bg-gray-200 transition"
               >
                 <h4 class="font-semibold mb-2">Todo List</h4>
                 <p class="text-sm text-gray-600">Task Management</p>
               </div>
             </a>
 
-            <!-- Progress Tracker Card -->
-            <a href="/features">
+            <!-- Study Schedule Card -->
+            <a href="/schedule" class="block">
               <div
-                class="bg-opacity-90 bg-gray-100 p-4 rounded-lg text-center hover:bg-gray-300"
-                data-aos="zoom-in"
-                data-aos-duration="2000"
+                class="bg-gray-100 bg-opacity-90 pt-2 pb-2 rounded-lg text-center hover:bg-gray-200 transition"
               >
-                <h4 class="font-semibold mb-2">Progress</h4>
-                <p class="text-sm text-gray-600">Track Learning</p>
+                <h4 class="font-semibold mb-2">Study Schedule</h4>
+                <p class="text-sm text-gray-600">Schedule Management</p>
               </div>
             </a>
           </div>
         </div>
       </div>
-    </section>
-
+    </div>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="scripts/dashboard.js"></script>
   </body>

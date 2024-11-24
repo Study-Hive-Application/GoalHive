@@ -6,17 +6,21 @@
     <title>Virtual Study Website</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/about.css" />
   </head>
-
   <body>
-    <!-- Navbar Section -->
-    <div>
-      <!-- Header-->
-      <%- include('partials/header') %>
-    </div>
-
+    <!-- Header -->
+    <%- include("partials/header") %>
     <!-- Hero Section -->
-    <section class="bg-blue-50 py-4">
+    <section class="bg-blue-50 py-4 pt-32">
       <div
         class="container mx-auto flex flex-col md:flex-row items-center px-5"
       >
@@ -63,14 +67,13 @@
     <!-- Main Content Section -->
     <main class="container mx-auto px-5">
       <section class="text-gray-600 body-font">
-        <div class="container px-5 py-24 mx-auto">
+        <div class="container px-5 py-12 mx-auto">
           <div class="flex flex-col text-center w-full mb-20">
             <h1
-              class="sm:text-3xl text-2xl font-medium title-font text-gray-900 pb-3"
-              data-aos="fade-right"
-              data-aos-duration="1000"
+              class="pb-5 text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-600 via-gray-800 to-gray-900 text-center"
+              data-aos="fade-down"
             >
-              Our Core Features
+              Study Shedule:
             </h1>
             <p
               class="lg:w-2/3 mx-auto leading-relaxed text-base"
@@ -82,62 +85,56 @@
               productivity with ease.
             </p>
           </div>
-          <div
-            class="flex flex-wrap -m-4 text-center"
-            data-aos="fade-right"
-            data-aos-duration="1000"
-          >
-            <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-              <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
-                <img
-                  src="images/Fea_Timer.png"
-                  alt=""
-                  class="w-14 h-14 mx-auto mb-2"
-                />
-                <h2 class="title-font font-medium text-2xl text-gray-900">
-                  Pomodoro
-                </h2>
-                <p class="leading-relaxed">Focused Productivity</p>
+          <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div
+              class="feature-card bg-gradient-to-br from-indigo-50 to-purple-50 p-8 rounded-3xl shadow-xl"
+            >
+              <div
+                class="w-16 h-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center mb-6 transform rotate-3"
+              >
+                <i class="fas fa-list-check text-2xl text-white"></i>
               </div>
+              <h3 class="text-2xl font-semibold mb-4 text-gray-800">
+                Smart ToDo List
+              </h3>
+              <p class="text-gray-600">
+                Organize tasks intelligently with AI-powered prioritization and
+                smart reminders.
+              </p>
             </div>
-            <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-              <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
-                <img
-                  src="images/progress.png"
-                  alt=""
-                  class="w-14 h-14 mx-auto mb-2"
-                />
-                <h2 class="title-font font-medium text-2xl text-gray-900">
-                  Study Schedule
-                </h2>
-                <p class="leading-relaxed">Goal Monitoring</p>
+
+            <div
+              class="feature-card bg-gradient-to-br from-indigo-50 to-purple-50 p-8 rounded-3xl shadow-xl"
+            >
+              <div
+                class="w-16 h-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center mb-6 transform -rotate-3"
+              >
+                <i class="fas fa-chart-line text-2xl text-white"></i>
               </div>
+              <h3 class="text-2xl font-semibold mb-4 text-gray-800">
+                Study Shedule
+              </h3>
+              <p class="text-gray-600">
+                A structured plan to allocate time for effective learning
+                activities.
+              </p>
             </div>
-            <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-              <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
-                <img
-                  src="images/to-do-list.png"
-                  alt=""
-                  class="w-14 h-14 mx-auto mb-2"
-                />
-                <h2 class="title-font font-medium text-2xl text-gray-900">
-                  ToDo List
-                </h2>
-                <p class="leading-relaxed">Task Management</p>
+
+            <div
+              class="feature-card bg-gradient-to-br from-indigo-50 to-purple-50 p-8 rounded-3xl shadow-xl"
+            >
+              <div
+                class="w-16 h-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center mb-6 transform rotate-3"
+              >
+                <i class="fas fa-clock text-2xl text-white"></i>
               </div>
-            </div>
-            <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-              <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
-                <img
-                  src="images/chat.png"
-                  alt=""
-                  class="w-14 h-14 mx-auto mb-2"
-                />
-                <h2 class="title-font font-medium text-2xl text-gray-900">
-                  Live Chat
-                </h2>
-                <p class="leading-relaxed">Real-Time Support</p>
-              </div>
+              <h3 class="text-2xl font-semibold mb-4 text-gray-800">
+                Focus Timer
+              </h3>
+              <p class="text-gray-600">
+                Boost productivity with our advanced Pomodoro timer and focus
+                tracking system.
+              </p>
             </div>
           </div>
         </div>
@@ -156,7 +153,7 @@
         <div class="flex -mx-4 justify-center">
           <div class="w-1/4 px-4 mb-4 text-center" data-aos="flip-left">
             <img
-              src="images/anup.jpg"
+              src="images/anup1.jpg"
               alt="Team Member 1"
               class="rounded-full w-24 h-24 mx-auto"
             />
@@ -182,7 +179,7 @@
             data-aos-duration="2000"
           >
             <img
-              src="/images/Tanvi.jpg"
+              src="images/Tanvi.jpg"
               alt="Team Member 1"
               class="rounded-full w-24 h-24 mx-auto"
             />
@@ -206,13 +203,28 @@
       </section>
     </main>
 
-    <!-- Footer Section -->
-    <%- include('partials/footer') %>
-
-    <!--Scripts-->
-    <script src="features.js"></script>
+    <!-- Footer -->
+    <%- include("partials/footer") %>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        // Animate hamburger icon
+        const paths = menuBtn.querySelector("svg").querySelectorAll("path");
+        paths.forEach((path) => {
+          path.classList.toggle("translate-y-1");
+        });
+      });
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", () => {
+        const header = document.querySelector("header");
+        if (window.scrollY > 50) {
+          header.classList.add("shadow-md");
+        } else {
+          header.classList.remove("shadow-md");
+        }
+      });
       AOS.init();
     </script>
   </body>
